@@ -80,9 +80,6 @@
 				transform: scale(1.0);
 			}
 		}
-		.left{
-			margin-top: 2%;
-		}
 		.top> h3{
 			margin-bottom:20px !important;
 		}
@@ -96,7 +93,7 @@
 			background-color: lightCoral;
 			color: white;
 			vertical-align:middle;
-			margin-bottom: 5%;
+			margin:0 0 5% 0;
 		}
 		.foot{
 			padding: 2%;			
@@ -135,6 +132,29 @@
 		a:focus, a:hover{
 			color: brown;
 		}
+		.tile{
+			margin:2% 2% 0% 2%;
+			font-size:150%;
+		}
+		.data{
+			margin-top: 3%;
+		}
+		@media (max-width: 600px) {		
+			.tile{
+				margin:2% 2% 0% 2%;
+				font-size:80%;
+			}					
+			.data{
+				margin-bottom: 50%;
+			}
+			.table{
+				font-size:inherit !important;
+				padding:1% !important;
+			}
+			thead>tr>td{
+				font-size: medium;
+			}
+		}
 		
 	</style>
 </head
@@ -143,7 +163,7 @@
 		<h3 style="margin-left: 2%; font-weight: bold;">C O U R I E R - B U D D Y</h3>
 
 	</div>
-	<div class="container">
+	<div class="container col-lg-12 col-md-12 col-sm-12">
 		<div class="starter-template">			
 			<form method="get" action="" class="form ">
 				<div class="form-group ">
@@ -171,15 +191,17 @@
 			<div class="" id="bounce2"></div>
 			<div class="" id="bounce3"></div>
 		</div>
-		<div class="exp" id="exp" style="margin:2% 2% 0% 2%; font-size:155%;"></div>
-		<div class="data" id="data"></div>
+		<div class="exp col-lg-12 col-md-12 col-sm-12 tile" id="exp" ></div>
+		<div class="exp2 col-lg-12 col-md-12 col-sm-12 tile" id="exp2"></div>
+		<div class="data col-lg-12 col-md-12 col-sm-12" id="data"></div>
 	</div>
 	<div class=" navbar-fixed-bottom foot col-lg-12 col-sm-12 col-md-12" id="foot">
 		<footer class="text-center">All rights Reserved. site design / logo &copy; 2017 Jayant Parashar, &nbsp;All Icons/Names/Logos belong to respective owners. Contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0.</a></footer>
 	</div>
 </body>
 	
-	<script type="text/javascript">
+	<script type="text/javascript">									
+											
 		function getTracking() {
 
 			var element1 = document.getElementById("spinner");
@@ -240,7 +262,9 @@
 									for (var i = 0; i < trackingArray.checkpoints.length; i++) {
 												arr.push(trackingArray.checkpoints[i])
 											}
-											var htm = '<div class="left col-lg-12 col-md-6 col-sm-12"><table class="table table-hover table-bordered" style="padding:5%;"><thead><tr><td>Time</td><td>City/Location</td><td>Status</td><td>Status updated at</td></tr></thead><tbody>';
+											var updateTime = " Details updated at :  ";
+											var updateTimeArray =[];
+											var htm = '<table class="table table-hover table-responsive table-bordered" style="padding:5%;"><thead><tr><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
 											var outer = '';
 											var exp = '  Expected Date Of Delivery: ';
 											if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag !="Delivered") {
@@ -260,21 +284,31 @@
 												else{
 													city= arr[j].city;
 												}
-												var inner = '<tr><td>' + arr[j].checkpoint_time + '</td><td>' + city + '</td><td>' + arr[j].message + '</td><td>' + arr[j].created_at + '</td></tr>';
+												var inner = '<tr><td>' + arr[j].checkpoint_time + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
 												outer = outer + inner;
+												updateTimeArray.push(arr[j].created_at);												
 											}
+											var d = new Date(updateTimeArray[updateTimeArray.length-1]);
+												d.toLocaleDateString().replace(/\//g,'-');
+												console.log(d);
+											updateTime= updateTime+ '<strong style="color:lightCoral; text-align:right;">'+d+'</strong>';
+											console.log(updateTimeArray[updateTimeArray.length-1]);
+											console.log(updateTimeArray);
 
-											var htm = htm + outer + '</tbody></th></table></div>';
+
+											var htm = htm + outer + '</tbody></th></table>';
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
 											element3.classList.remove("bounce2");
 											element4.classList.remove("bounce3");
 											var doc1 = document.getElementById("exp");
+											var doc2 = document.getElementById("exp2");
 											var doc = document.getElementById("data");
 											var classless = document.getElementById("foot");
 											classless.classList.remove("foot");
 											classless.classList.add("footChanger");
 											doc1.innerHTML = exp;
+											doc2.innerHTML = updateTime;
 											doc.innerHTML = htm;
 											document.getElementById('exp').scrollIntoView();								
 								}//track();
