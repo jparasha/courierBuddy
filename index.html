@@ -160,9 +160,13 @@
 			thead>tr>td{
 				font-size: medium;
 			}
-			strng{
+			.strng{
 				font-size: medium;
 				font-weight: inherit !important;
+			}
+			.navbar-fixed-bottom {
+				position:relative !important;
+				margin-top: 20%;
 			}
 		}
 		
@@ -218,7 +222,7 @@
 			var element2 = document.getElementById("bounce1");
 			var element3 = document.getElementById("bounce2");
 			var element4 = document.getElementById("bounce3");
-
+			document.getElementById("exp2").innerHTML = "";
 
 			var code = document.getElementById("code").value;
 			var slug = document.getElementById("slug").value;
