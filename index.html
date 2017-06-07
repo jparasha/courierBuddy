@@ -139,13 +139,19 @@
 		.data{
 			margin-top: 3%;
 		}
+		.btn:focus,.btn:active {
+		   outline: none !important;
+		}
 		@media (max-width: 600px) {		
 			.tile{
 				margin:2% 2% 0% 2%;
 				font-size:80%;
 			}					
 			.data{
-				margin-bottom: 50%;
+				margin-bottom: 30%;
+			}
+			.exp{
+				margin-top:10% !important;
 			}
 			.table{
 				font-size:inherit !important;
@@ -153,6 +159,10 @@
 			}
 			thead>tr>td{
 				font-size: medium;
+			}
+			strng{
+				font-size: medium;
+				font-weight: inherit !important;
 			}
 		}
 		
@@ -213,8 +223,8 @@
 			var code = document.getElementById("code").value;
 			var slug = document.getElementById("slug").value;
 			if (code === "" || code === "null") {
-				document.getElementById("exp").innerHTML = "";
-				document.getElementById("data").innerHTML = "<strong style='margin-left:2%;'>P L E A S E &nbsp;&nbsp;  E N T E R &nbsp;&nbsp; A &nbsp;&nbsp;  V A L I D &nbsp;&nbsp; T R A C K I N G &nbsp;&nbsp; C O D E &nbsp;!</strong>";
+				document.getElementById("data").innerHTML = "";
+				document.getElementById("exp").innerHTML = "<strong style='margin-left:2%;' class='strng'>P L E A S E &nbsp;&nbsp;  E N T E R &nbsp;&nbsp; A &nbsp;&nbsp;  V A L I D &nbsp;&nbsp; T R A C K I N G &nbsp;&nbsp; C O D E &nbsp;!</strong>";
 			} 
 			else {
 				document.getElementById("data").innerHTML = "";
@@ -248,15 +258,26 @@
 								   return response.json();
 							 }).then(function(data) {
 								   //console.log(data);
-									mainData=data;									
-									var trackingArray = data.data.trackings[0];
-								if(trackingArray.checkpoints.length===0){
+									mainData=data;		
+									var trackingArray;
+									for(var i =0; i<data.data.trackings.length; i++){
+										if (data.data.trackings[i].checkpoints.length != 0){
+											trackingArray=data.data.trackings[i];
+										}
+										else{
+										
+										
+											//console.log("t-array empty");
+										}
+									}
+									
+								if(trackingArray.checkpoints.length===0 || trackingArray.checkpoints.length === undefined ){
 									var doc = document.getElementById("exp");
 									element1.classList.remove("spinner");
 									element2.classList.remove("bounce1");
 									element3.classList.remove("bounce2");
 									element4.classList.remove("bounce3");
-									doc.innerHTML = '<strong style="color:red; margin-top:2%;">Snapp.. That looks like an error!</strong>';
+									doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
 								}
 								else{
 									for (var i = 0; i < trackingArray.checkpoints.length; i++) {
@@ -290,12 +311,7 @@
 											}
 											var d = new Date(updateTimeArray[updateTimeArray.length-1]);
 												d.toLocaleDateString().replace(/\//g,'-');
-												console.log(d);
 											updateTime= updateTime+ '<strong style="color:lightCoral; text-align:right;">'+d+'</strong>';
-											console.log(updateTimeArray[updateTimeArray.length-1]);
-											console.log(updateTimeArray);
-
-
 											var htm = htm + outer + '</tbody></th></table>';
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
