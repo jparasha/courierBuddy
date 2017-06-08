@@ -261,7 +261,7 @@
 							 }).then(function(response) {
 								   return response.json();
 							 }).then(function(data) {
-								   console.log(data);
+								   //console.log(data);
 									mainData=data;		
 									var trackingArray;
 									for(var i =0; i<data.data.trackings.length; i++){
@@ -273,12 +273,12 @@
 											//console.log("t-array empty");
 										}
 									}
-									console.log(trackingArray);
+									//console.log(trackingArray);
 									//console.log(trackingArray.checkpoints.length);
 									if(trackingArray === undefined){
 										
 										
-										console.log("here at 277");
+										//console.log("here at 277");
 										var doc = document.getElementById("exp");
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
@@ -293,7 +293,7 @@
 									}
 									else{									
 										if(trackingArray.checkpoints.length===0 || trackingArray.checkpoints.length === undefined){
-											console.log("here 286");
+											//console.log("here 286");
 											var doc = document.getElementById("exp");
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
@@ -302,7 +302,7 @@
 											doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
 										}
 										else{
-											console.log("here at 296");
+											//console.log("here at 296");
 											for (var i = 0; i < trackingArray.checkpoints.length; i++) {
 														arr.push(trackingArray.checkpoints[i])
 													}
