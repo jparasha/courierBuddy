@@ -268,16 +268,20 @@
 										nums++;
 										//console.log("429");
 										var trying = document.getElementById("exp");
-										if(nums<2){
+										if(nums<5){
 											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.message + '</strong>';
 											call();
 										}
-										else if(nums >= 2 && nums <= 5){
+										else if(nums >= 5 && nums <= 10){
 											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
 											call();
 										}
 										else{
 											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
+											element1.classList.remove("spinner");
+											element2.classList.remove("bounce1");
+											element3.classList.remove("bounce2");
+											element4.classList.remove("bounce3");
 											//call();
 										}
 									}
