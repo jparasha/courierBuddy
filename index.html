@@ -6,7 +6,7 @@
 	<title>Jayant Parashar | CourierTracker</title>
 	<link rel="shortcut icon" href="https://raw.githubusercontent.com/jparasha/jparasha.github.io/master/img/self.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="//fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+	<!-- <link href="//fonts.googleapis.com/css?family=Cuprum" rel="stylesheet"> -->
 	<style>
 		htm, body{
 			height: 100%;
@@ -218,6 +218,7 @@
 											
 		function getTracking() {
 
+			var nums=0;
 			var element1 = document.getElementById("spinner");
 			var element2 = document.getElementById("bounce1");
 			var element3 = document.getElementById("bounce2");
@@ -243,7 +244,7 @@
 					var mainData;
 					var arr=[];
 					var url = "https://couriermgmt.herokuapp.com/tracking";
-					//var url = "http://localhost:8000/tracking";					
+					///var url = "http://localhost:8000/tracking";					
 					var bod= {	
 									"slug":slug,
 									"tracking_number": code
@@ -261,77 +262,102 @@
 							 }).then(function(response) {
 								   return response.json();
 							 }).then(function(data) {
-								   //console.log(data);
-									mainData=data;		
-									var trackingArray;
-									for(var i =0; i<data.data.trackings.length; i++){
-										if (data.data.trackings[i].checkpoints.length != 0){
-											trackingArray=data.data.trackings[i];
+								  // console.log(data);
+									mainData=data;
+									if(data.meta.code === 429){	
+										nums++;
+										//console.log("429");
+										var trying = document.getElementById("exp");
+										if(nums<2){
+											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.message + '</strong>';
+											call();
+										}
+										else if(nums<5){
+											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
+											call();
 										}
 										else{
-										
-										
-											//console.log("t-array empty");
+											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
+											//call();
 										}
 									}
-									
-								if(trackingArray.checkpoints.length===0 || trackingArray.checkpoints.length === undefined ){
-									var doc = document.getElementById("exp");
-									element1.classList.remove("spinner");
-									element2.classList.remove("bounce1");
-									element3.classList.remove("bounce2");
-									element4.classList.remove("bounce3");
-									doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
-								}
-								else{
-									for (var i = 0; i < trackingArray.checkpoints.length; i++) {
-												arr.push(trackingArray.checkpoints[i])
-											}
-											var updateTime = " Details updated at :  ";
-											var updateTimeArray =[];
-											var htm = '<table class="table table-hover table-responsive table-bordered" style="padding:5%;"><thead><tr><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
-											var outer = '';
-											var exp = '  Expected Date Of Delivery: ';
-											if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag !="Delivered") {
-												exp = exp + '<strong style="color:lightCoral;">C U R R E N T L Y &nbsp;&nbsp; U N A V A I L A B L E !</strong>';
-											} 
-											else if(data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag ==="Delivered"){							
-											 exp= exp + '<strong style="color:lightCoral;">D E L I V E R E D !</strong>';
-											}
-											else {
-												exp = exp + '<strong style="color:lightCoral;">'+data.data.trackings[0].expected_delivery+'</strong>';
-											}
-											for (var j = arr.length - 1; j >= 0; --j) {
-												var city='';
-												if (arr[j].city===null){
-													city= arr[j].location;
+									else if(data.meta.code===200){
+											//console.log("200");
+											var trackingArray;
+											for(var i =0; i<data.data.trackings.length; i++){
+												if (data.data.trackings[i].checkpoints.length != 0){
+													trackingArray=data.data.trackings[i];
 												}
-												else{
-													city= arr[j].city;
+												else{											
+													//console.log("t-array empty");
 												}
-												var inner = '<tr><td>' + arr[j].checkpoint_time + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
-												outer = outer + inner;
-												updateTimeArray.push(arr[j].created_at);												
 											}
-											var d = new Date(updateTimeArray[updateTimeArray.length-1]);
-												d.toLocaleDateString().replace(/\//g,'-');
-											updateTime= updateTime+ '<strong style="color:lightCoral; text-align:right;">'+d+'</strong>';
-											var htm = htm + outer + '</tbody></th></table>';
+											
+										if(trackingArray.checkpoints.length===0 || trackingArray.checkpoints.length === undefined ){
+											//console.log("checkpoints 0");
+											var doc = document.getElementById("exp");
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
 											element3.classList.remove("bounce2");
 											element4.classList.remove("bounce3");
-											var doc1 = document.getElementById("exp");
-											var doc2 = document.getElementById("exp2");
-											var doc = document.getElementById("data");
-											var classless = document.getElementById("foot");
-											classless.classList.remove("foot");
-											classless.classList.add("footChanger");
-											doc1.innerHTML = exp;
-											doc2.innerHTML = updateTime;
-											doc.innerHTML = htm;
-											document.getElementById('exp').scrollIntoView();								
-								}//track();
+											doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
+										}
+										else{
+											//console.log("for loop");
+											for (var i = 0; i < trackingArray.checkpoints.length; i++) {
+														arr.push(trackingArray.checkpoints[i])
+													}
+													var updateTime = " Details updated at :  ";
+													var updateTimeArray =[];
+													var htm = '<table class="table table-hover table-responsive table-bordered" style="padding:5%;"><thead><tr><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
+													var outer = '';
+													var exp = '  Expected Date Of Delivery: ';
+													if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag !="Delivered") {
+														exp = exp + '<strong style="color:lightCoral;">C U R R E N T L Y &nbsp;&nbsp; U N A V A I L A B L E !</strong>';
+													} 
+													else if(data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag ==="Delivered"){							
+													 exp= exp + '<strong style="color:lightCoral;">D E L I V E R E D !</strong>';
+													}
+													else {
+														exp = exp + '<strong style="color:lightCoral;">'+data.data.trackings[0].expected_delivery+'</strong>';
+													}
+													for (var j = arr.length - 1; j >= 0; --j) {
+														var city='';
+														if (arr[j].city===null){
+															city= arr[j].location;
+														}
+														else{
+															city= arr[j].city;
+														}
+														var inner = '<tr><td>' + arr[j].checkpoint_time + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
+														outer = outer + inner;
+														updateTimeArray.push(arr[j].created_at);												
+													}
+													var d = new Date(updateTimeArray[updateTimeArray.length-1]);
+														d.toLocaleDateString().replace(/\//g,'-');
+													updateTime= updateTime+ '<strong style="color:lightCoral; text-align:right;">'+d+'</strong>';
+													var htm = htm + outer + '</tbody></th></table>';
+													element1.classList.remove("spinner");
+													element2.classList.remove("bounce1");
+													element3.classList.remove("bounce2");
+													element4.classList.remove("bounce3");
+													var doc1 = document.getElementById("exp");
+													var doc2 = document.getElementById("exp2");
+													var doc = document.getElementById("data");
+													var classless = document.getElementById("foot");
+													classless.classList.remove("foot");
+													classless.classList.add("footChanger");
+													doc1.innerHTML = exp;
+													doc2.innerHTML = updateTime;
+													doc.innerHTML = htm;
+													document.getElementById('exp').scrollIntoView();								
+										}//track();
+									}
+									else{
+										//console.log("sorry!");
+										var trying = document.getElementById("exp");
+										trying.innerHTML = '<strong style="color:lightCoral; margin-top:2%;">Well, that is an error! try submitting request again..</strong>';
+									}
 							   }).catch(function() {
 										console.log("error");
 										var text="Looks like an error!";
@@ -347,8 +373,7 @@
 										element3.classList.remove("bounce2");
 										element4.classList.remove("bounce3");
 										doc.innerHTML = '<strong style="color:red; margin-top:2%;">' + text + '</strong>';
-									 });
-					
+									 });					
 					}			
 			} //else
 
