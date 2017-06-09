@@ -205,6 +205,7 @@
 			<div class="" id="bounce2"></div>
 			<div class="" id="bounce3"></div>
 		</div>
+		<div class="breathe col-lg-12 col-md-12 col-sm-12 text-center" id="breathe" ></div>
 		<div class="exp col-lg-12 col-md-12 col-sm-12 tile" id="exp" ></div>
 		<div class="exp2 col-lg-12 col-md-12 col-sm-12 tile" id="exp2"></div>
 		<div class="data col-lg-12 col-md-12 col-sm-12" id="data"></div>
@@ -267,17 +268,17 @@
 									if(data.meta.code === 429){	
 										nums++;
 										//console.log("429");
-										var trying = document.getElementById("exp");
+										var trying = document.getElementById("breathe");
 										if(nums<5){
-											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.message + '</strong>';
+											trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.message + '</strong>';
 											call();
 										}
-										else if(nums >= 5 && nums <= 10){
-											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
+										else if(nums >= 5 && nums <= 15){
+											trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
 											call();
 										}
 										else{
-											trying.innerHTML = '<strong style="color:lightCoral; margin-top:1%; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
+											trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
 											element1.classList.remove("spinner");
 											element2.classList.remove("bounce1");
 											element3.classList.remove("bounce2");
@@ -349,6 +350,8 @@
 													var doc2 = document.getElementById("exp2");
 													var doc = document.getElementById("data");
 													var classless = document.getElementById("foot");
+													var breather = document.getElementById("breathe");
+													breather.innerHTML="";
 													classless.classList.remove("foot");
 													classless.classList.add("footChanger");
 													doc1.innerHTML = exp;
@@ -372,6 +375,8 @@
 											text = mainData.meta.message;
 										}								
 										var doc = document.getElementById("exp");
+										var breather = document.getElementById("breathe");
+										breather.innerHTML="";
 										element1.classList.remove("spinner");
 										element2.classList.remove("bounce1");
 										element3.classList.remove("bounce2");
