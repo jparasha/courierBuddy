@@ -8,9 +8,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="//fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 	<style>
-		htm, body{
-			height: 100%;
-		}
 		body {			
 			background-color: #f2f2f2;
 			color: black;
@@ -96,7 +93,7 @@
 			margin:0 0 5% 0;
 		}
 		.foot{
-			padding: 2%;			
+			padding: 1% 0 1% 0;			
 			background-color: transparent;
 			color: lightCoral;
 		}
@@ -173,7 +170,8 @@
 	</style>
 </head
 <body>
-	<div class="top col-lg-12 col-sm-12 col-md-12">
+
+	<div class="top navbar-default col-lg-12 col-sm-12 col-md-12">
 		<h3 style="margin-left: 2%; font-weight: bold;">C O U R I E R - B U D D Y</h3>
 
 	</div>
@@ -213,6 +211,7 @@
 	<div class=" navbar-fixed-bottom foot col-lg-12 col-sm-12 col-md-12" id="foot">
 		<footer class="text-center">All rights Reserved. site design / logo &copy; 2017 Jayant Parashar, &nbsp;All Icons/Names/Logos belong to respective owners. Contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0.</a></footer>
 	</div>
+
 </body>
 	
 	<script type="text/javascript">									
@@ -245,7 +244,7 @@
 					var mainData;
 					var arr=[];
 					var url = "https://couriermgmt.herokuapp.com/tracking";
-					///var url = "http://localhost:8000/tracking";					
+					//var url = "http://localhost:8000/tracking";					
 					var bod= {	
 									"slug":slug,
 									"tracking_number": code
@@ -334,7 +333,9 @@
 														else{
 															city= arr[j].city;
 														}
-														var inner = '<tr><td>' + arr[j].checkpoint_time + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
+														var istDate=new Date(arr[j].checkpoint_time);
+														istDate.toLocaleDateString().replace(/\//g,'-');
+														var inner = '<tr><td>' + istDate + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
 														outer = outer + inner;
 														updateTimeArray.push(arr[j].created_at);												
 													}
@@ -381,7 +382,7 @@
 										element2.classList.remove("bounce1");
 										element3.classList.remove("bounce2");
 										element4.classList.remove("bounce3");
-										doc.innerHTML = '<strong style="color:red; margin-top:2%;">' + text + '</strong>';
+										doc.innerHTML = '<strong style="color:red; margin-top:2%; margin-left:2%;">' + text + '</strong>';
 									 });					
 					}			
 			} //else
