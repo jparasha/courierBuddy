@@ -1,5 +1,5 @@
 var availableStorage = true;
-var init = '<table class= "table table-bordered table-hover" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td>Action</td></tr><thead><tbody>';
+var init = '<table class= "table table-bordered table-hover" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td>Action</td></tr><thead><tbody style="font-size:x-large;">';
 var term = '</tbody></table>';
 if (typeof (Storage) !== "undefined") {
 	// Code for localStorage/sessionStorage.
