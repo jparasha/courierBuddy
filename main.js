@@ -1,23 +1,22 @@
 var availableStorage = true;
-var init = '<table class= "table table-bordered table-hover" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td>Action</td></tr><thead><tbody style="font-size:x-large;">';
+var init = '<table class= "table table-bordered table-hover" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td colspan="2">Action</td></tr><thead><tbody style="font-size:x-large;">';
 var term = '</tbody></table>';
 if (typeof (Storage) !== "undefined") {
 	// Code for localStorage/sessionStorage.
 	var retrievedObject = localStorage.getItem('courierObj');
-	if(retrievedObject === null){
-		console.log("Its nothing here!");
+	var checkObj = JSON.parse(retrievedObject);
+	if(checkObj === null || checkObj.slug.length===0){
+		//console.log("Its nothing here!");		
 	}
-	else{
-		
-	
-	//console.log(retrievedObject);
- 	var tracker= document.getElementById('tracker');
- 	var sMsg= document.getElementById('sMsg');
-	tracker.classList.remove('hidden');
-	sMsg.classList.remove('hidden');
-	//var divdown= document.getElementById('divdown')
-	//divup.classList.remove('hidden);
-	getTable();
+	else{	
+		//console.log(checkObj);
+		var tracker= document.getElementById('tracker');
+		var sMsg= document.getElementById('sMsg');
+		tracker.classList.remove('hidden');
+		sMsg.classList.remove('hidden');
+		//var divdown= document.getElementById('divdown')
+		//divup.classList.remove('hidden);
+		getTable();
 	}
 
 } else {
@@ -138,11 +137,6 @@ function addCookies(data) {
 				if (retrievedObject.tracking[i] === data.tracking_code) {
 					console.log("already added!");
 					isAvailable = true;
-
-					//arr.slug.push(retrievedObject.slug[i]); ///for loop [1] returns null
-					//arr.id.push(retrievedObject.tracking[i]);
-					//getTable();
-					//createView(arr);
 				} else {
 					console.log("nope");
 					//retrievedObject.slug.push(data.slug);
@@ -184,12 +178,12 @@ function getTable() {
 	var rowId = 0;
 	for (var x = tableObj.tracking.length - 1; x >= 0; --x) {
 		//console.log(tableObj.slug[x]);
-		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>T R A C K</strong></td></tr>';
+		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>Delete</strong></td></tr>';
 		mid = mid + addMid;
 		rowId++;
 	}
 	var table = init + mid + term;
-	console.log(mid);
+	//console.log(mid);
 	createView(table);
 }
 
@@ -198,6 +192,45 @@ function createView(table) {
 	var jsView = document.getElementById('trackTable');
 	jsView.innerHTML = table;
 	document.getElementById('tracker').scrollIntoView();
+}
+function deleteTracking(x){
+	var tData={
+		"slug":"",
+		"track":""
+	};	
+	
+	var tr = document.getElementById(x.id);
+	var td = tr.getElementsByTagName("td");
+	tData.slug = td[0].innerHTML;
+	tData.track = td[1].innerHTML;	
+	retrievedObject = JSON.parse(retrievedObject);
+	var index;
+	var isAvailable = false;			
+			for (var i = 0; i < retrievedObject.tracking.length; i++) {
+				if (retrievedObject.tracking[i] === tData.track) {
+					isAvailable = true;
+					index=i;
+					
+				} else {
+					alert("That's an Error!");
+					
+				}
+			}
+	if (index > -1) {
+		retrievedObject.tracking.splice(index, 1);
+		retrievedObject.slug.splice(index, 1);
+	}
+	console.log(retrievedObject);
+	localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
+	var row = x;
+  //	console.log(row);
+	
+	row.parentNode.removeChild(row);
+		var tracker= document.getElementById('tracker');
+		var sMsg= document.getElementById('sMsg');
+		tracker.classList.add('hidden');
+		sMsg.classList.add('hidden');
+	
 }
 
 function getTracking(x) {
@@ -360,10 +393,11 @@ function getTracking(x) {
 
 } //js
 
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ /*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-99377211-2', 'auto');
   ga('send', 'pageview');
+*/
