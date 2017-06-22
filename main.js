@@ -178,7 +178,7 @@ function getTable() {
 	var rowId = 0;
 	for (var x = tableObj.tracking.length - 1; x >= 0; --x) {
 		//console.log(tableObj.slug[x]);
-		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>Delete</strong></td></tr>';
+		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>TRACK</strong></td></tr>';
 		mid = mid + addMid;
 		rowId++;
 	}
