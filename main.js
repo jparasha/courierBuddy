@@ -5,13 +5,12 @@ if (typeof (Storage) !== "undefined") {
 	// Code for localStorage/sessionStorage.
 	var retrievedObject = localStorage.getItem('courierObj');
 	var checkObj = JSON.parse(retrievedObject);
-	if(checkObj === null || checkObj.slug.length===0){
+	if (checkObj === null || checkObj.slug.length === 0) {
 		//console.log("Its nothing here!");		
-	}
-	else{	
+	} else {
 		//console.log(checkObj);
-		var tracker= document.getElementById('tracker');
-		var sMsg= document.getElementById('sMsg');
+		var tracker = document.getElementById('tracker');
+		var sMsg = document.getElementById('sMsg');
 		tracker.classList.remove('hidden');
 		sMsg.classList.remove('hidden');
 		//var divdown= document.getElementById('divdown')
@@ -45,7 +44,7 @@ function createTracking() {
 		element2.classList.add("bounce1");
 		element3.classList.add("bounce2");
 		element4.classList.add("bounce3");
-		errors.innerHTML="";
+		errors.innerHTML = "";
 
 		var url = "https://couriermgmt.herokuapp.com/createTracking";
 		//var url = "http://localhost:8000/createTracking";
@@ -72,10 +71,10 @@ function createTracking() {
 			element3.classList.remove("bounce2");
 			element4.classList.remove("bounce3");
 			var doc = document.getElementById("topMsg");
-		//	var div1 = document.getElementById("divUp");
-		//	var div2 = document.getElementById("divDown");
-			
-		//	div1.classList.add('hidden');
+			//	var div1 = document.getElementById("divUp");
+			//	var div2 = document.getElementById("divDown");
+
+			//	div1.classList.add('hidden');
 			tracker.classList.remove('hidden');
 			doc.innerHTML = '<strong style="color:#5377d6;margin-bottom:2%;">' + successMsg + '</strong>';
 			addCookies(data);
@@ -111,42 +110,23 @@ function addCookies(data) {
 			// Put the object into storage
 			var rowId = 0;
 			localStorage.setItem('courierObj', JSON.stringify(courierObj));
-			var mid = '<tr id="' + rowId + '"><td>' + courierObj.slug + '</td><td>' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff; ; "><strong>T R A C K</strong></button></td></tr>';
+			var mid = '<tr id="' + rowId + '"><td>' + courierObj.slug + '</td><td>' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit; ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 			rowId++;
 			var table = init + mid + term;
 			createView(table);
 
 
-		}
+		} else {
 
-		// todo if already added remove div
-		//if(localstorage hasValue) => display
-		else {
-			//var arr={
-			//			slug:[],
-			//			id  :[]
-			//		};
 			retrievedObject = JSON.parse(retrievedObject);
 			//console.log(retrievedObject.tracking.length);
-
-
 			var isAvailable = false;
-
-			//check logic, important!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			for (var i = 0; i < retrievedObject.tracking.length; i++) {
 				if (retrievedObject.tracking[i] === data.tracking_code) {
 					console.log("already added!");
 					isAvailable = true;
 				} else {
 					console.log("nope");
-					//retrievedObject.slug.push(data.slug);
-					//retrievedObject.tracking.push(data.tracking_code);
-					// Put the object into storage
-					//localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
-					//console.log(localStorage.courierObj);
-
-					//getTable();
-					//createView(arr);
 				}
 			}
 			if (isAvailable === false) {
@@ -178,7 +158,7 @@ function getTable() {
 	var rowId = 0;
 	for (var x = tableObj.tracking.length - 1; x >= 0; --x) {
 		//console.log(tableObj.slug[x]);
-		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>TRACK</strong></td></tr>';
+		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #fff ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 		mid = mid + addMid;
 		rowId++;
 	}
@@ -193,44 +173,63 @@ function createView(table) {
 	jsView.innerHTML = table;
 	document.getElementById('tracker').scrollIntoView();
 }
-function deleteTracking(x){
-	var tData={
-		"slug":"",
-		"track":""
-	};	
-	
+
+function deleteTracking(x) {
+	var tData = {
+		"slug": "",
+		"track": ""
+	};
+
 	var tr = document.getElementById(x.id);
 	var td = tr.getElementsByTagName("td");
 	tData.slug = td[0].innerHTML;
-	tData.track = td[1].innerHTML;	
-	retrievedObject = JSON.parse(retrievedObject);
+	tData.track = td[1].innerHTML;
+	//retrievedObject = JSON.parse(retrievedObject);
 	var index;
-	var isAvailable = false;			
-			for (var i = 0; i < retrievedObject.tracking.length; i++) {
-				if (retrievedObject.tracking[i] === tData.track) {
-					isAvailable = true;
-					index=i;
-					
-				} else {
-					alert("That's an Error!");
-					
-				}
-			}
-	if (index > -1) {
-		retrievedObject.tracking.splice(index, 1);
-		retrievedObject.slug.splice(index, 1);
+	var isAvailable = false;
+	var deleteObj = localStorage.getItem('courierObj');
+	//console.log(deleteObj);
+	deleteObj = JSON.parse(deleteObj);
+	//console.log(deleteObj);
+	for (var i = 0; i < deleteObj.tracking.length; i++) {
+		if (deleteObj.tracking[i] === tData.track) {
+			isAvailable = true;
+			index = i;
+
+		} else {
+			console.log("That's an Error!");
+
+		}
 	}
-	console.log(retrievedObject);
-	localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
+	if (index > -1) {
+		deleteObj.tracking.splice(index, 1);
+		deleteObj.slug.splice(index, 1);
+	}
+	//console.log(deleteObj);
+	localStorage.setItem('courierObj', JSON.stringify(deleteObj));
 	var row = x;
-  //	console.log(row);
-	
-	row.parentNode.removeChild(row);
-		var tracker= document.getElementById('tracker');
-		var sMsg= document.getElementById('sMsg');
+	//	console.log(row);
+
+	var row = x;
+	var parent = x.parentNode;
+	var pClass = parent.classList;
+	var tbody = document.getElementsByClassName(pClass);
+	//console.log(tbody);
+	var bChild = tbody[0].childElementCount;
+	var tRow = document.getElementsByTagName("tr");
+	//console.log(tRow);
+	if (bChild === 1) {
+		var tracker = document.getElementById('tracker');
+		var sMsg = document.getElementById('sMsg');
 		tracker.classList.add('hidden');
 		sMsg.classList.add('hidden');
-	
+	} else {
+		row.parentNode.removeChild(row);
+		var doc = document.getElementById("topMsg");
+		var msg = "Your " + tData.slug + " tracking deleted successfully ";
+		doc.innerHTML = '<strong style="color:#5377d6;margin-bottom:2%;">' + msg + '</strong>';
+	}
+
 }
 
 function getTracking(x) {
@@ -258,7 +257,7 @@ function getTracking(x) {
 	console.log("code is" + code);
 	if (code === "" || code === "null") {
 		document.getElementById("data").innerHTML = "";
-		document.getElementById("exp").innerHTML = "<strong style='margin-left:2%;' class='strng'>P L E A S E &nbsp;&nbsp;  E N T E R &nbsp;&nbsp; A &nbsp;&nbsp;  V A L I D &nbsp;&nbsp; T R A C K I N G &nbsp;&nbsp; C O D E &nbsp;!</strong>";
+		document.getElementById("exp").innerHTML = "<strong style='margin-left:2%;' class='strng'>PLEASE&nbsp;&nbsp;ENTER&nbsp;&nbsp;A&nbsp;&nbsp;VALID&nbsp;&nbsp;TRACKING&nbsp;&nbsp;CODE&nbsp;!</strong>";
 	} else {
 		document.getElementById("data").innerHTML = "";
 		document.getElementById("exp").innerHTML = "";
@@ -271,10 +270,10 @@ function getTracking(x) {
 		function call() {
 			var mainData;
 			var arr = [];
-			var url = "https://couriermgmt.herokuapp.com/tracking/"+slug+"/"+code;
+			var url = "https://couriermgmt.herokuapp.com/tracking/" + slug + "/" + code;
 			//var url = "http://localhost:8000/tracking/" + slug + "/" + code;
 			fetch(url, {
-				method: "get"				
+				method: "get"
 			}).then(function (response) {
 				return response.json();
 			}).then(function (data) {
@@ -285,13 +284,13 @@ function getTracking(x) {
 					//console.log("429");
 					var trying = document.getElementById("breathe");
 					if (nums < 5) {
-						trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.message + '</strong>';
+						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.message + '</strong>';
 						call();
 					} else if (nums >= 5 && nums <= 15) {
-						trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
+						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
 						call();
 					} else {
-						trying.innerHTML = '<strong style="color:lightCoral; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
+						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.failedMsg + '</strong>';
 						element1.classList.remove("_spinner");
 						element2.classList.remove("_bounce1");
 						element3.classList.remove("_bounce2");
@@ -326,11 +325,11 @@ function getTracking(x) {
 						var outer = '';
 						var exp = '  Expected Date Of Delivery: ';
 						if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag != "Delivered") {
-							exp = exp + '<strong style="color:lightCoral;">C U R R E N T L Y &nbsp;&nbsp; U N A V A I L A B L E !</strong>';
+							exp = exp + '<strong style="color:#226194;">CURRENTLY&nbsp;&nbsp;UNAVAILABLE!</strong>';
 						} else if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag === "Delivered") {
-							exp = exp + '<strong style="color:lightCoral;">D E L I V E R E D !</strong>';
+							exp = exp + '<strong style="color:#226194;">DELIVERED !</strong>';
 						} else {
-							exp = exp + '<strong style="color:lightCoral;">' + data.data.trackings[0].expected_delivery + '</strong>';
+							exp = exp + '<strong style="color:#226194;">' + data.data.trackings[0].expected_delivery + '</strong>';
 						}
 						for (var j = arr.length - 1; j >= 0; --j) {
 							var city = '';
@@ -347,7 +346,7 @@ function getTracking(x) {
 						}
 						var d = new Date(updateTimeArray[updateTimeArray.length - 1]);
 						d.toLocaleDateString().replace(/\//g, '-');
-						updateTime = updateTime + '<strong style="color:lightCoral; text-align:right;">' + d + '</strong>';
+						updateTime = updateTime + '<strong style="color:#226194; text-align:right;">' + d + '</strong>';
 						var htm = htm + outer + '</tbody></th></table>';
 						element1.classList.remove("_spinner");
 						element2.classList.remove("_bounce1");
@@ -359,8 +358,6 @@ function getTracking(x) {
 						//var classless = document.getElementById("foot");
 						var breather = document.getElementById("breathe");
 						breather.innerHTML = "";
-						//classless.classList.remove("foot");
-						//classless.classList.add("footChanger");
 						doc1.innerHTML = exp;
 						doc2.innerHTML = updateTime;
 						doc.innerHTML = htm;
@@ -369,7 +366,7 @@ function getTracking(x) {
 				} else {
 					//console.log("sorry!");
 					var trying = document.getElementById("exp");
-					trying.innerHTML = '<strong style="color:lightCoral; margin-top:2%;">Well, that is an error! try submitting request again..</strong>';
+					trying.innerHTML = '<strong style="color:#226194; margin-top:2%;">Well, that is an error! try submitting request again..</strong>';
 				}
 			}).catch(function () {
 				console.log("error");
@@ -393,11 +390,11 @@ function getTracking(x) {
 
 } //js
 
- /*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-99377211-2', 'auto');
   ga('send', 'pageview');
-*/
+

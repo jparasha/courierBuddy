@@ -21,6 +21,7 @@
 				padding: 2% 2% 3% 5%;
 			}
 			.create {
+				padding: 5% !important;
 				margin: 10% 0;
 				text-align: left !important;
 			}
@@ -71,7 +72,7 @@
 		}
 		
 		.creator {
-			padding: 2% 1% 4% 1%;
+			padding: 2% 0% 0% 0%;
 			text-align: center;
 			background-color: #6e9fc7;
 		}
@@ -84,8 +85,9 @@
 		
 		.create {
 			text-align: left;
-			padding: 5% 3%;
-			background-color: #255277 ;
+			padding: 5% 25%;
+			background-color: #255277;
+			margin: 5% 0% 0% 0% !important;
 		}
 		.form-horizontal .form-group{
 			margin-left: 0px !important;
@@ -105,7 +107,7 @@
 		}
 		::-webkit-input-placeholder {
 		  	color: #fff !important;
-			font-style: italic !important;
+			font-size: small!important;
 		}
 		.select{
 			color: #fff !important;
@@ -116,7 +118,12 @@
 		.btn-grp{
 			text-align: right !important;
 		}
-		
+		.btn:focus, .btn:active{
+		    outline: none !important;
+			-webkit-box-shadow: 0px 0px 6px 3px #9E9E9E;
+			-moz-box-shadow: 0px 0px 6px 3px #9E9E9E;
+			box-shadow: 0px 0px 6px 3px #9E9E9E;
+		}
 		.spinner, ._spinner {
 			margin: 100px auto 0;
 			width: 70px;
@@ -292,7 +299,7 @@
 							</div>
 						</div>
 					</form>
-					<span id="errors"></span>
+					<span id="errors" style="padding-left:5% !important;"></span>
 					<div class="" id="spinner" style="margin-top:2%">
 						<div class="" id="bounce1"></div>
 						<div class="" id="bounce2"></div>
@@ -304,7 +311,7 @@
 		<div class="showAd" id="showAd"></div>
 		<div class="tracker hidden" id="tracker">
 			<div class="successMsg text-left" id="topMsg"></div>
-			<div class="staticMsg text-left hidden" id="sMsg" style="color:#6e9fc7;margin-bottom:2%;">Recently Created Trackings:</div>
+			<div class="staticMsg text-left hidden" id="sMsg" style="color:#226194;margin-bottom:2%;">Recently Created Trackings:</div>
 			<div class="storageTable">
 				<div id="trackTable"></div>
 				<div class="" id="_spinner" style="margin-top:2%">
