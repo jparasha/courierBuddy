@@ -7,6 +7,8 @@ function about (data){
 	else if(data==='learnMore'){
 		var text= "<h2>More Details Coming Soon!</h2>"
 		var learnMore = document.getElementById('learnMore');
+		var show = document.getElementById('learnMoreHide');
+        show.classList.remove('hidden');
 		learnMore.innerHTML=text;
 	}
 }
