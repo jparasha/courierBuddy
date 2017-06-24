@@ -5,231 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Jayant Parashar | CourierBuddy</title>
-	<link rel="shortcut icon" href="">
+	<title>CourierBuddy | The Courier tracking Destination</title>
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
-	<style>
-		@media (max-width: 600px) {
-			.header>h1 {
-				font-weight: bold;
-				font-size: 150% !important;
-				margin-bottom: 10%;
-			}	
-			.instructions{
-				text-align: left !important;
-				padding: 2% 2% 3% 5%;
-			}
-			.create {
-				padding: 5% !important;
-				margin: 10% 0;
-				text-align: left !important;
-			}
-			.tracker{
-				font-size: x-small !important;
-			}
-			.container{
-				font-size:x-small !important;
-			}
-		}
-		
-		@media (min-width: 610px) {
-			.header>h1 {
-				font-weight: bold;
-				font-size: 300% !important;
-				margin-bottom: 5%;
-			}
-			.create {
-				margin: 5% 10% !important;
-			}
-			.trackerTableBody{
-				font-size: x-large !important;
-			}
-		}
-		.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-			background-color: #6e9fc7 !important;
-		}
-		.navbar-inverse{
-			border-bottom: 1px solid #fff !important;
-		}
-		.navbar-inverse .navbar-brand{
-			color: white !important;
-		}
-		.navbar-inverse .navbar-brand:hover{
-			color: #9d9d9d !important;
-		}
-		.glyphicon-hand-right{
-			color: #E64A19 !important;
-			margin-right: 2%;
-		}
-		
-		body {
-			padding-top: 50px;
-			font-family: 'Cuprum' !important;
-			font-size: large;
-			background-color: #2d333a;
-			color: white;
-		}
-		
-		.creator {
-			padding: 2% 0% 0% 0%;
-			text-align: center;
-			background-color: #6e9fc7;
-		}
-		
-		.tracker {
-			padding: 40px 15px;
-			text-align: center;
-			background-color: rgba(245, 242, 242, 0.89);
-		}
-		
-		.create {
-			text-align: left;
-			padding: 5% 25%;
-			background-color: #255277;
-			margin: 5% 0% 0% 0% !important;
-		}
-		.form-horizontal .form-group{
-			margin-left: 0px !important;
-			margin-right: 0px !important;
-		}
-		
-		.form-control, .form-group {
-			color: #fff !important;
-			text-align: left !important;
-			border-radius: 0px!important;
-		}
-		.form-control{
-			font-size: 130% !important;			
-			color: #fff !important;
-			background-color: #6e9fc7 !important;
-			border: 1px solid #fff !important;
-		}
-		::-webkit-input-placeholder {
-		  	color: #fff !important;
-			font-size: small!important;
-		}
-		.select{
-			color: #fff !important;
-		}
-		select option{
-			border: 1px solid #fff !important;
-		}
-		.btn-grp{
-			text-align: right !important;
-		}
-		.btn:focus, .btn:active{
-		    outline: none !important;
-			-webkit-box-shadow: 0px 0px 6px 3px #9E9E9E;
-			-moz-box-shadow: 0px 0px 6px 3px #9E9E9E;
-			box-shadow: 0px 0px 6px 3px #9E9E9E;
-		}
-		.spinner, ._spinner {
-			margin: 100px auto 0;
-			width: 70px;
-			text-align: center;
-		}
-		
-		.spinner>div{
-			width: 18px;
-			height: 18px;
-			background-color: white;
-			border-radius: 100%;
-			display: inline-block;
-			-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-			animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-		}
-		._spinner>div{
-			width: 18px;
-			height: 18px;
-			background-color: #255277  !important;
-			border-radius: 100%;
-			display: inline-block;
-			-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-			animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-		}
-		
-		.spinner .bounce1, ._spinner ._bounce1 {
-			-webkit-animation-delay: -0.32s;
-			animation-delay: -0.32s;
-		}
-		
-		.spinner .bounce2, ._spinner ._bounce2 {
-			-webkit-animation-delay: -0.16s;
-			animation-delay: -0.16s;
-		}
-		
-		@-webkit-keyframes sk-bouncedelay {
-			0%,
-			80%,
-			100% {
-				-webkit-transform: scale(0)
-			}
-			40% {
-				-webkit-transform: scale(1.0)
-			}
-		}
-		
-		@keyframes sk-bouncedelay {
-			0%,
-			80%,
-			100% {
-				-webkit-transform: scale(0);
-				transform: scale(0);
-			}
-			40% {
-				-webkit-transform: scale(1.0);
-				transform: scale(1.0);
-			}
-		}
-		.table-bordered{
-			border: 1px solid #6e9fc7 !important;
-		}
-		.table-hover>tbody>tr:hover{
-			background-color: #255277  !important;
-		}
-		#getTracking, #deleteTracking{
-			cursor: pointer !important;
-		}
-		#getTracking:hover{
-			background-color: white !important;
-			color: #6e9fc7 !important;
-		}
-		#deleteTracking:hover{
-			background-color: white !important;
-			color: indianred !important;
-		}
-		#exp, #exp2{
-			color: #255277 !important;
-		}
-		.table{
-			margin-top: 2% !important;
-			background-color: #6e9fc7 !important;
-		}
-		.tablePadding{
-			background-color: #255277  !important;
-			padding: 2% !important;
-		}
-		.foot{	
-			padding-top: 5%;
-			padding-bottom: 5%;
-			background-color: #255277 !important;
-		}
-		.foot a{
-			color: white !important;
-		}
-		.footDown{
-			padding-bottom: 1%;
-			padding-top: 1%;
-			background-color: #226194;
-		}.footDown a{
-			color: wheat;
-		}
-		.footDown a:hover{
-			color: white;
-		}
-	</style>
-
+	<link rel="stylesheet" href="/static/css/style.css">
 	<!--[if IE]>
 								<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 								<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -246,14 +25,14 @@
 																				<span class="icon-bar"></span>
 																				<span class="icon-bar"></span>
 																</button>
-				<h1 style="display:inline;"><a class="navbar-brand" href="#">COURIER&nbsp;BUDDY</a></h1>
+				<h1 style="display:inline;"><a class="navbar-brand" href="/index.html">COURIER&nbsp;BUDDY</a></h1>
 			</div>
 
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li class="active"><a href="/index.html">Home</a></li>
+					<li><a href="/about.html">About</a></li>
+					<li><a href="/contact.html">Contact</a></li>
 				</ul>
 			</div>
 			<!--.nav-collapse -->
@@ -265,10 +44,13 @@
 			<div class="addCourier" id="">
 				<div class="header" id="header">
 					<h1>Your Personal Tracking Manager</h1>
-					<div class="instructions">
-						<p> <strong><span class="glyphicon glyphicon-hand-right"></span> Enter Courier Name and Tracking number.</strong></p>
-						<p> <strong><span class="glyphicon glyphicon-hand-right"></span> Press Enter &amp; Done! Your tracking is created!</strong> </p>
-						<p> <strong><span class="glyphicon glyphicon-hand-right"></span> Now, you can return anytime and track without entering the tracking code again!</strong></p>
+					<div class="instructions ">
+						<ul  class="text-left" style="display:inline-block;vertical-align:middle;">
+							<li  class="text-juatify"> <strong><span class=""></span> Enter Courier Name and Tracking number.</strong></li>
+							<li  class="text-justify"> <strong><span class=""></span> Press Enter &amp; Done! Your tracking is created!</strong> </li>
+							<li  class="text-justify"> <strong><span class=""></span> Return anytime and find your previous track!</strong></li>
+							<li  class="text-justify"> <strong><span class=""></span> No need to enter the tracking code again!</strong></li>
+						</ul>
 					</div>
 				</div>
 				<div class="create">
@@ -276,7 +58,7 @@
 						<div class="form-group">
 							<div class="col-sm-12 col-lg-12">
 								<label for="code">Tracking Code</label>
-								<input type="text" class="form-control input-lg" id="code" placeholder="Like : 'GGN50335013'" autofocus>
+								<input type="text" class="form-control input-lg" id="code" placeholder="Like : 'GGN50335013'">
 							</div>
 						</div>
 						<div class="form-group">
@@ -354,11 +136,12 @@
 			</div>
 		</div>
 		<div class=" footDown col-lg-12 col-sm-12 col-md-12" id="foot">
-			<footer class="text-center">All rights Reserved. site design / logo &copy; 2017 COURIERBUDDY, &nbsp;All Icons/Names/Logos belong to respective owners. Contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0.</a></footer>
+			<footer class="text-center">All rights Reserved. site design / logo &copy; 2017 COURIERBUDDY, &nbsp;All Icons/Names/Logos belong to respective owners.</footer>
 		</div>
 		
 	</div>
-	<script src="main.js"></script>
+	<script src="/static/js/main.js"></script>
+	<script src="/static/js/ga.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
