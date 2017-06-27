@@ -24,6 +24,8 @@ function createTracking() {
     var errors = document.getElementById("errors");
     var tracker = document.getElementById("tracker");
     document.getElementById("exp2").innerHTML = "";
+    document.getElementById("exp").innerHTML = "";
+    document.getElementById("exp3").innerHTML = "";
     var code = document.getElementById("code").value;
     var slug = document.getElementById("slug").value;
     if (code === "" || code === "null" || code.length <6) {
@@ -52,8 +54,8 @@ function createTracking() {
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
-            console.log(data.message);
+            //console.log(data);
+            //console.log(data.message);
             var successMsg = "Great! We have created your " + data.slug + " tracking! "
             element1.classList.remove("spinner");
             element2.classList.remove("bounce1");
@@ -140,7 +142,7 @@ function createView(table) {
 function deleteTracking(x) {
     var tData = {
         "slug": "",
-        "track": ""
+        "track": "" 
     };
     var tr = document.getElementById(x.id);
     var td = tr.getElementsByTagName("td");
