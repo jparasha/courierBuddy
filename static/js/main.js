@@ -101,7 +101,7 @@ function addCookies(data) {
                     console.log("already added!");
                     isAvailable = true;
                 } else {
-                    console.log("nope");
+                   // console.log("nope");
                 }
             }
             if (isAvailable === false) {
@@ -110,7 +110,7 @@ function addCookies(data) {
                 localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
                 console.log(localStorage.courierObj);
             } else {
-                console.log("isAvailable");
+                //console.log("isAvailable");
             }
             getTable();
         }
@@ -225,6 +225,7 @@ function getTracking(x) { //console.log(x);
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
+				//console.log(data);
                 mainData = data;
                 if (data.meta.code === 429) {
                     nums++;
@@ -245,10 +246,18 @@ function getTracking(x) { //console.log(x);
                 } else if (data.meta.code === 200) {
                     var trackingArray;
                     for (var i = 0; i < data.data.trackings.length; i++) {
-                        if (data.data.trackings[i].checkpoints.length != 0) {
-                            trackingArray = data.data.trackings[i];
-                        } else {}
+						var title =data.data.trackings[i].title;
+						if(title.toUpperCase()===code.toUpperCase()){
+							if (data.data.trackings[i].checkpoints.length != 0) {
+								trackingArray = data.data.trackings[i];
+								//console.log(trackingArray);
+							} else {}
+						}
+						else{
+							//console.log('it is' +title);
+						}
                     }
+					
                     if (trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined) {
                         var doc = document.getElementById("exp");
                         element1.classList.remove("spinner");
@@ -258,6 +267,7 @@ function getTracking(x) { //console.log(x);
                         doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
                     } else {
                         for (var i = 0; i < trackingArray.checkpoints.length; i++) {
+							
                             arr.push(trackingArray.checkpoints[i])
                         }
                         var updateTime = " Details updated at :  ";
