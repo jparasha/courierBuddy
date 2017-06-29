@@ -63,7 +63,8 @@
 	color: #9d9d9d !important;
 }
 .navbar> .container {
-    margin-left: 5% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
 }
 .glyphicon-hand-right {
 	color: #E64A19 !important;
