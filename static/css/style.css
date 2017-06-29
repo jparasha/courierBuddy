@@ -269,6 +269,7 @@ select option {
 	padding-top: 5%;
 	padding-bottom: 5%;
 	background-color: #255277 !important;
+	background-image: url(../images/trans_pat.png);
 }
 
 .foot a {
@@ -279,6 +280,7 @@ select option {
 	padding-bottom: 1%;
 	padding-top: 1%;
 	background-color: #6e9fc7;
+	background-image: url(../images/trans_pat.png);
 }
 
 .footDown a {
