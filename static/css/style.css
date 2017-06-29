@@ -62,7 +62,9 @@
 .navbar-inverse .navbar-brand:hover {
 	color: #9d9d9d !important;
 }
-
+.navbar> .container {
+    margin-left: 5% !important;
+}
 .glyphicon-hand-right {
 	color: #E64A19 !important;
 	margin-right: 2%;
@@ -83,6 +85,13 @@ body {
 	font-size: large;
 	background-color: #2d333a;
 	color: white;
+}
+.container, .container-fluid{
+	padding: 0px!important;
+	margin: 0px !important;
+}
+.container{
+	width: 100% !important;
 }
 
 .creator {
