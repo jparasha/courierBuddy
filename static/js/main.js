@@ -97,7 +97,7 @@ function addCookies(data) {
 		if (retrievedObject === undefined || retrievedObject === null) {
 			var rowId = 0;
 			localStorage.setItem('courierObj', JSON.stringify(courierObj));
-			var mid = '<tr id="' + rowId + '"><td>' + courierObj.slug + '</td><td>' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit; ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
+			var mid = '<tr id="' + rowId + '"><td id="'+courierObj.slug+'">' + courierObj.slug + '</td><td id="' +courierObj.tracking +'">' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit; ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 			rowId++;
 			var table = init + mid + term;
 			createView(table);
@@ -114,7 +114,7 @@ function addCookies(data) {
 				retrievedObject.slug.push(data.slug);
 				retrievedObject.tracking.push(data.tracking_code);
 				localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
-				console.log(localStorage.courierObj);
+				///console.log(localStorage.courierObj);
 			} else {}
 			getTable();
 		}
@@ -129,7 +129,7 @@ function getTable() {
 	var mid = '';
 	var rowId = 0;
 	for (var x = tableObj.tracking.length - 1; x >= 0; --x) {
-		addMid = '<tr id = "' + rowId + '"><td>' + tableObj.slug[x] + '</td><td>' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #inherit ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
+		addMid = '<tr id = "' + rowId + '"><td id="'+tableObj.slug[x]+'">' + tableObj.slug[x] + '</td><td id="'+ tableObj.tracking[x] +'">' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #inherit ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 		mid = mid + addMid;
 		rowId++;
 	}
@@ -150,8 +150,9 @@ function deleteTracking(x) {
 	};
 	var tr = document.getElementById(x.id);
 	var td = tr.getElementsByTagName("td");
-	tData.slug = td[0].innerHTML;
-	tData.track = td[1].innerHTML;
+	tData.slug = td[0].id;
+	tData.track = td[1].id;
+	console.log(tData);
 	var index;
 	var isAvailable = false;
 	var deleteObj = localStorage.getItem('courierObj');
@@ -161,7 +162,7 @@ function deleteTracking(x) {
 			isAvailable = true;
 			index = i;
 		} else {
-			console.log("That's an Error!");
+			console.log("That's an Error!!");
 		}
 	}
 	if (index > -1) {
@@ -204,8 +205,9 @@ function getTracking(x) {
 	};
 	var tr = document.getElementById(x.id);
 	var td = tr.getElementsByTagName("td");
-	tData.slug = td[0].innerHTML;
-	tData.track = td[1].innerHTML;
+	tData.slug = td[0].id;
+	tData.track = td[1].id;
+	console.log(tData.slug +'::'+ tData.track);
 	var code = tData.track;
 	var slug = tData.slug;
 	if (code === "" || code === "null") {

@@ -26,6 +26,9 @@
 	.container {
 		font-size: x-small !important;
 	}
+    .navbar-brand{
+        padding-top: 2%!important;
+    }
     
 }
 
@@ -41,6 +44,9 @@
 	.trackerTableBody {
 		font-size: large !important;
 	}
+    .navbar-brand{
+        padding-top: 5%!important;
+    }
 }
 
 .navbar-inverse .navbar-nav>.active>a,
@@ -72,6 +78,7 @@
 			color: #E64A19 !important;
 			margin-right: 2%;
 		}*/
+
 
 .navbar-inverse .navbar-toggle {
 	border-color: #6e9fc7 !important;
