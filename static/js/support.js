@@ -22,7 +22,7 @@ function contact(){
 		"email":email,
 		"issue":issue,
 		"text":text
-	};
+	};//
 	console.log(body);
 	
 	var success=document.getElementById('success');

@@ -171,7 +171,7 @@ function deleteTracking(x) {
 	}
 	localStorage.setItem('courierObj', JSON.stringify(deleteObj));
 	var row = x;
-	var row = x;
+	var row = x;//
 	var parent = x.parentNode;
 	var pClass = parent.classList;
 	var tbody = document.getElementsByClassName(pClass);
