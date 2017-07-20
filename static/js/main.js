@@ -1,3 +1,6 @@
+var xhr = new XMLHttpRequest();
+xhr.open('GET', "https://couriermgmt.herokuapp.com", true);
+xhr.send();
 var availableStorage = true;
 var init = '<table class= "table table-bordered table-hover table-responsive" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td colspan="2">Action</td></tr><thead><tbody class="trackerTableBody">';
 var term = '</tbody></table>';
