@@ -41,7 +41,7 @@ function createTracking() {
 	document.getElementById("exp3").innerHTML = "";
 	var code = document.getElementById("code").value;
 	var slug = document.getElementById("slug").value;
-	if (code === "" || code === "null" || code.length < 6) {
+	if (code === "" || code === "null" || code.length < 10) {
 		document.getElementById("data").innerHTML = "";
 		document.getElementById("errors").innerHTML = "<strong class='strng'>PLEASE&nbsp;ENTER&nbsp;A &nbsp;VALID&nbsp;TRACKING&nbsp;CODE!</strong>";
 	} else {
