@@ -317,6 +317,9 @@ body {
 .footDown a {
 	color: wheat;
 }
+.footUp {
+	font-size: 80% !important;
+}
 
 .footDown a:hover {
 	color: white;
