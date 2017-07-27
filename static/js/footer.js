@@ -4,77 +4,77 @@ var i= document.getElementById('footerDynamic');
         </div>
         <div class="foot col-lg-12 col-md-12 col-sm-12">
 
-            <div class="footUp">
+            <div class="footUp ">
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">Professional Courier Tracking</a></li>
-                        <li><a href="#">DTDC Courier Tracking</a></li>
+                        <li><a href="#">PROFESSIONAL COURIER TRACKING</a></li>
+                        <li><a href="#">DTDC COURIER TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">Blue Dart Courier Tracking</a></li>
-                        <li><a href="#">Fedex Courier Tracking</a></li>
+                        <li><a href="#">BLUE-DART COURIER TRACKING</a></li>
+                        <li><a href="#">FEDEX COURIER TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">First-Flight Courier Tracking</a></li>
-                        <li><a href="#">India Post Tracking</a></li>
+                        <li><a href="#">FIRST-FLIGHT COURIER TRACKING</a></li>
+                        <li><a href="#">INDIA POST TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">DELHIVERY Tracking</a></li>
-                        <li><a href="#">EKART Tracking</a></li>
+                        <li><a href="#">DELHIVERY TRACKING</a></li>
+                        <li><a href="#">EKART TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">DHL INTERNATIONAL Tracking</a></li>
-                        <li><a href="#">DOTZOT Tracking</a></li>
+                        <li><a href="#">DHL INTERNATIONAL TRACKING</a></li>
+                        <li><a href="#">DOTZOT TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">PARCELLED.IN Tracking</a></li>
-                        <li><a href="#">JAYON EXPRESS(JEX) Tracking</a></li>
+                        <li><a href="#">PARCELLED.IN TRACKING</a></li>
+                        <li><a href="#">JAYON EXPRESS(JEX) TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">XPRESSBEES Tracking</a></li>
-                        <li><a href="#">ECOM EXPRESS Tracking</a></li>
+                        <li><a href="#">XPRESSBEES TRACKING</a></li>
+                        <li><a href="#">ECOM EXPRESS TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">RED EXPRESS Tracking</a></li>
-                        <li><a href="#">GOJAVAS Tracking</a></li>
+                        <li><a href="#">RED EXPRESS TRACKING</a></li>
+                        <li><a href="#">GOJAVAS TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">POSTNL DOMESTIC Tracking</a></li>
-                        <li><a href="#">GATI-KWE Tracking</a></li>
+                        <li><a href="#">POSTNL DOMESTIC TRACKING</a></li>
+                        <li><a href="#">GATI-KWE TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">RED EXPRESS WAYBILL Tracking</a></li>
-                        <li><a href="#">FEDEX FRIEGHT Tracking</a></li>
+                        <li><a href="#">RED EXPRESS WAYBILL TRACKING</a></li>
+                        <li><a href="#">FEDEX FRIEGHT TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">SAFE EXPRESS Tracking</a></li>
-                        <li><a href="#">FEDEX-UK Tracking</a></li>
+                        <li><a href="#">SAFE EXPRESS TRACKING</a></li>
+                        <li><a href="#">FEDEX-UK TRACKING</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <ul>
-                        <li><a href="#">DHL GLOBAL FORWARDING Tracking</a></li>
-                        <li><a href="#">INDIA POST INTERNATIONAL Tracking</a></li>
+                        <li><a href="#">DHL GLOBAL FORWARDING TRACKING</a></li>
+                        <li><a href="#">INDIA POST INTERNATIONAL TRACKING</a></li>
                     </ul>
                 </div>
             </div>
