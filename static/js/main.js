@@ -263,11 +263,15 @@ function getTracking(x) {
 					}
 					if ( trackingArray===undefined || trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined ) {
 						var doc = document.getElementById("exp");
-						element1.classList.remove("spinner");
-						element2.classList.remove("bounce1");
-						element3.classList.remove("bounce2");
-						element4.classList.remove("bounce3");
-						doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error/ tracking may have expired! </strong>';
+						var element1 = document.getElementById("_spinner");
+						var element2 = document.getElementById("_bounce1");
+						var element3 = document.getElementById("_bounce2");
+						var element4 = document.getElementById("_bounce3");
+						element1.classList.remove("_spinner");
+						element2.classList.remove("_bounce1");
+						element3.classList.remove("_bounce2");
+						element4.classList.remove("_bounce3");
+						doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error- tracking may have expired or not have been created yet! </strong>';
 					} else {
 						for (var i = 0; i < trackingArray.checkpoints.length; i++) {
 							arr.push(trackingArray.checkpoints[i])
