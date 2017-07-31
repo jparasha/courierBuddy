@@ -308,7 +308,11 @@ function getTracking(x) {
 						d.toLocaleDateString().replace(/\//g, '-');
 						updateTime = updateTime + '<strong style="color:#226194; text-align:right;">' + d + '</strong>';
 						var htm = htm + outer + '</tbody></th></table>';
-						element1.classList.remove("_spinner");
+						var element1 = document.getElementById("_spinner");
+						var element2 = document.getElementById("_bounce1");
+						var element3 = document.getElementById("_bounce2");
+						var element4 = document.getElementById("_bounce3");
+                        element1.classList.remove("_spinner");
 						element2.classList.remove("_bounce1");
 						element3.classList.remove("_bounce2");
 						element4.classList.remove("_bounce3");
