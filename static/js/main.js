@@ -261,7 +261,7 @@ function getTracking(x) {
 							} else {}
 						} else {}
 					}
-					if (trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined) {
+					if (trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined || trackingArray===undefined) {
 						var doc = document.getElementById("exp");
 						element1.classList.remove("spinner");
 						element2.classList.remove("bounce1");
