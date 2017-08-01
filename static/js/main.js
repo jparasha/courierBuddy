@@ -57,34 +57,48 @@ function createTracking() {
 			"slug": slug,
 			"tracking_number": code
 		};
-		fetch(url, {
-			method: "post",
-			json: true,
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(bod)
-		}).then(function (response) {
-			return response.json();
-		}).then(function (data) {
-			var successMsg = "Great! We have created your " + data.slug + " tracking! "
+		
+		//try wether fetch is supported 
+		try{
+			fetch(url, {
+				method: "post",
+				json: true,
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify(bod)
+			}).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				var successMsg = "Great! We have created your " + data.slug + " tracking! "
+				element1.classList.remove("spinner");
+				element2.classList.remove("bounce1");
+				element3.classList.remove("bounce2");
+				element4.classList.remove("bounce3");
+				var doc = document.getElementById("topMsg");
+				tracker.classList.remove('hidden');
+				doc.innerHTML = '<strong style="color:#5377d6;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
+				addCookies(data);
+			}).catch(function () {
+				var errorMsg = "Something Went Wrong in processing your request."
+				element1.classList.remove("spinner");
+				element2.classList.remove("bounce1");
+				element3.classList.remove("bounce2");
+				element4.classList.remove("bounce3");
+				var doc = document.getElementById("exp");
+				doc.innerHTML = '<strong style="color:red; margin-top:2%; margin-left:2%;">' + errorMsg + '</strong>';
+			});
+		}
+		catch(error){
 			element1.classList.remove("spinner");
 			element2.classList.remove("bounce1");
 			element3.classList.remove("bounce2");
 			element4.classList.remove("bounce3");
-			var doc = document.getElementById("topMsg");
-			tracker.classList.remove('hidden');
-			doc.innerHTML = '<strong style="color:#5377d6;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
-			addCookies(data);
-		}).catch(function () {
-			var errorMsg = "Something Went Wrong in processing your request."
-			element1.classList.remove("spinner");
-			element2.classList.remove("bounce1");
-			element3.classList.remove("bounce2");
-			element4.classList.remove("bounce3");
-			var doc = document.getElementById("exp");
-			doc.innerHTML = '<strong style="color:red; margin-top:2%; margin-left:2%;">' + errorMsg + '</strong>';
-		});
+			console.log("SOME ERROR:"+error);
+			var errorDoc = document.getElementById("errors");
+			var errormsg= "OUR BAD:( Your Browser's version is not currently supported! Please use Chrome for best results. Thanks :)";
+			errorDoc.innerHTML = '<strong style="color:orange; margin-top:2%; margin-left:2%;">' + errormsg + '</strong>';
+		}
 	}
 }
 
