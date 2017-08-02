@@ -249,6 +249,7 @@ function getTracking(x) {
 				return response.json();
 			}).then(function (data) {
 				mainData = data;
+				console.log(data);
 				if (data.meta.code === 429) {
 					nums++;
 					var trying = document.getElementById("breathe");
@@ -291,19 +292,23 @@ function getTracking(x) {
 							arr.push(trackingArray.checkpoints[i])
 						}
 						var updateTime = " Details updated at :  ";
-						var trackDetails = 'Your Consignment Number  :';
-						var tracks = '<strong style="color:#226194; text-align:right;">' + tData.track + '</strong>';
+						var trackDetails = 'Your Consignment Number  : ';
+						var tracks = '<strong style="color:orange; text-align:right;">' + tData.track + '</strong>';
 						trackDetails = trackDetails + tracks;
 						var updateTimeArray = [];
 						var htm = '<hr style="margin-top: 1%; margin-bottom: 1%; border-top:1px solid #255277!important"><table class="table table-hover table-responsive table-bordered" style="padding:5%; border-color:#fff !important;"><thead><tr class="dataTable"><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
 						var outer = '';
-						var exp = '  Expected Date Of Delivery: ';
-						if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag != "Delivered") {
+						var exp = '  Expected Date Of Delivery : ';
+						var len= data.data.trackings.length;
+						console.log(len);
+						if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag != "Delivered") {
 							exp = exp + '<strong style="color:orange;">CURRENTLY&nbsp;&nbsp;UNAVAILABLE!</strong>';
-						} else if (data.data.trackings[0].expected_delivery === null && data.data.trackings[0].tag === "Delivered") {
+						} else if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag === "Delivered") {
 							exp = exp + '<strong style="color:green;">DELIVERED !</strong>';
 						} else {
-							exp = exp + '<strong style="color:#226194;">' + data.data.trackings[0].expected_delivery + '</strong>';
+							var expD= new Date(data.data.trackings[len-1].expected_delivery);
+							expD.toLocaleDateString().replace(/\//g, '-');
+							exp = exp + '<strong style="color:orange;">' + expD + '</strong>';
 						}
 						for (var j = arr.length - 1; j >= 0; --j) {
 							var city = '';
@@ -320,7 +325,7 @@ function getTracking(x) {
 						}
 						var d = new Date(updateTimeArray[updateTimeArray.length - 1]);
 						d.toLocaleDateString().replace(/\//g, '-');
-						updateTime = updateTime + '<strong style="color:#226194; text-align:right;">' + d + '</strong>';
+						updateTime = updateTime + '<strong style="color:orange; text-align:right;">' + d + '</strong>';
 						var htm = htm + outer + '</tbody></th></table>';
 						var element1 = document.getElementById("_spinner");
 						var element2 = document.getElementById("_bounce1");
