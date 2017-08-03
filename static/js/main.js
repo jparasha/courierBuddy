@@ -215,6 +215,7 @@ function getTracking(x) {
 	var element4 = document.getElementById("_bounce3");
 	var element5 = document.getElementById("topMsg");
 	document.getElementById("exp2").innerHTML = "";
+	document.getElementById("exp3").innerHTML = "";
 	element5.innerHTML = "";
 	var tData = {
 		"slug": "",
