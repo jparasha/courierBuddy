@@ -51,5 +51,12 @@ function contact(){
 }
 //js
 
-
-
+function trackDirect(){
+    var code = document.getElementById("code").value;
+	var slug = document.getElementById("slug").value;
+    var obj ={
+        "slug":slug,
+        "code":code
+    }
+    console.log(obj +"hi");
+}
