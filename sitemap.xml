@@ -1,29 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+	<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-<url>
-  <loc>http://courierguru.info/</loc>
-  <lastmod>2017-07-01T21:21:24+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://courierguru.info/about.html</loc>
-  <lastmod>2017-07-01T21:21:24+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://courierguru.info/contact.html</loc>
-  <lastmod>2017-07-01T21:21:24+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://courierguru.info/privacypolicy.html</loc>
-  <lastmod>2017-07-01T21:21:24+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-</url>
+	<url>
+		<loc>http://courierguru.info/</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/about.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/contact.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/privacypolicy.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/dtdc-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/professional-couriers-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/ekart-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/delhivery-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/india-post-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/india-post-international-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/ecom-express-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/dhl-international-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/xpressbees-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/fedex-frieght-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/blue-dart-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/fedex-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/dotzot-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/safe-express-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/gojavas-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/red-express-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/fedex-uk-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/post-nl-domestic-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/first-flight-couriers-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/gati-kwe-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/jayon-express-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/dhl-global-forwarding-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://courierguru.info/Services/parcelled-in-tracking.html</loc>
+		<lastmod>2017-08-04T19:55:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
 </urlset>
