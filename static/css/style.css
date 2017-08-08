@@ -101,7 +101,9 @@ body {
 	background-color: #2d333a;
 	color: #fff
 }
-
+.form-control{
+	font-family: cuprum !important; 
+}
 .creator,
 .tracker {
 	text-align: center;

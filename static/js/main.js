@@ -4,6 +4,7 @@ xhr.send();
 var availableStorage = true;
 var init = '<table class= "table table-bordered table-hover table-responsive" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td colspan="2">Action</td></tr><thead><tbody class="trackerTableBody">';
 var term = '</tbody></table>';
+var ul= "herokuapp";
 if (typeof (Storage) !== "undefined") {
 	var retrievedObject = localStorage.getItem('courierObj');
 	var checkObj = JSON.parse(retrievedObject);
@@ -22,11 +23,11 @@ if (typeof (Storage) !== "undefined") {
 function knowMore(x){
 	if (x=== 'gotoDemo'){
 		var goto = document.getElementById('demo');
-		goto.scrollIntoView();
+		$('html, body').animate({scrollTop: $(goto).offset().top -50 }, 'slow');
 	}
 	else if(x==='gotoCreate'){
 		var goto = document.getElementById('create');
-		goto.scrollIntoView();
+		$('html, body').animate({scrollTop: $(goto).offset().top -50 }, 'slow');
 	}
 }
 function createTracking() {
@@ -52,7 +53,7 @@ function createTracking() {
 		element3.classList.add("bounce2");
 		element4.classList.add("bounce3");
 		errors.innerHTML = "";
-		var url = "https://couriermgmt.herokuapp.com/createTracking";
+		var url = "https://couriermgmt."+ul+".com/createTracking";
 		var bod = {
 			"slug": slug,
 			"tracking_number": code
@@ -157,7 +158,9 @@ function getTable() {
 function createView(table) {
 	var jsView = document.getElementById('trackTable');
 	jsView.innerHTML = table;
-	document.getElementById('tracker').scrollIntoView();
+	var sc= document.getElementById('tracker');
+	//sc.scrollIntoView();
+	$('html, body').animate({scrollTop: $(sc).offset().top -50 }, 'slow');
 }
 
 function deleteTracking(x) {
@@ -243,7 +246,7 @@ function getTracking(x) {
 		function call() {
 			var mainData;
 			var arr = [];
-			var url = "https://couriermgmt.herokuapp.com/tracking/" + slug + "/" + code;
+			var url = "https://couriermgmt."+ul+".com/tracking/" + slug + "/" + code;
 			fetch(url, {
 				method: "get"
 			}).then(function (response) {
@@ -301,12 +304,18 @@ function getTracking(x) {
 						var outer = '';
 						var exp = '  Expected Date Of Delivery : ';
 						var len= data.data.trackings.length;
-						console.log(len);
-						if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag != "Delivered") {
+						//console.log(len);
+						console.log(data.data.trackings[len-1].tag );
+						if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag === "Delivered") {
+							exp = exp + '<strong style="color:green;">Package DELIVERED !</strong>';
+						}else if (data.data.trackings[len-1].tag === "InTransit") {
+							exp = exp + '<strong style="color:#9e9e9e;">Package is In-Transit !</strong>';
+						}else if (data.data.trackings[len-1].tag === "OutForDelivery") {
+							exp = exp + '<strong style="color:#8bc34a;">Package out for Delivery !</strong>';
+						} else if ((data.data.trackings[len-1].expected_delivery === null) && ((data.data.trackings[len-1].tag !== "Delivered") || (data.data.trackings[len-1].tag !== "InTransit") || (data.data.trackings[len-1].tag !== "OutForDelivery"))) {
 							exp = exp + '<strong style="color:orange;">CURRENTLY&nbsp;&nbsp;UNAVAILABLE!</strong>';
-						} else if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag === "Delivered") {
-							exp = exp + '<strong style="color:green;">DELIVERED !</strong>';
-						} else {
+						}  
+						else {
 							var expD= new Date(data.data.trackings[len-1].expected_delivery);
 							expD.toLocaleDateString().replace(/\//g, '-');
 							exp = exp + '<strong style="color:orange;">' + expD + '</strong>';
@@ -347,7 +356,9 @@ function getTracking(x) {
 						doc2.innerHTML = updateTime;
 						doc.innerHTML = htm;
 						doc3.innerHTML = trackDetails;
-						document.getElementById('exp').scrollIntoView();
+						//document.getElementById('exp3').scrollIntoView();
+					 	
+								$('html, body').animate({scrollTop: $('#exp3').offset().top -100 }, 'slow');
 					}
 				} else {
 					var trying = document.getElementById("exp");
