@@ -1,6 +1,6 @@
-/*var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 xhr.open('GET', "https://couriermgmt.herokuapp.com", true);
-xhr.send();*/
+xhr.send();
 var availableStorage = true;
 var init = '<table class= "table table-bordered table-hover table-responsive" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td colspan="2">Action</td></tr><thead><tbody class="trackerTableBody">';
 var term = '</tbody></table>';
@@ -323,8 +323,9 @@ function getTracking(x) {
 							var inner = '<tr><td>' + istDate + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
 							outer = outer + inner;
 							updateTimeArray.push(arr[j].created_at);
+							
 						}
-						var d = new Date(updateTimeArray[updateTimeArray.length - 1]);
+						var d = new Date(updateTimeArray[0]);
 						d.toLocaleDateString().replace(/\//g, '-');
 						updateTime = updateTime + '<strong style="color:orange; text-align:right;">' + d + '</strong>';
 						var htm = htm + outer + '</tbody></th></table>';
