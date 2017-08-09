@@ -358,7 +358,7 @@ function getTracking(x) {
 						doc3.innerHTML = trackDetails;
 						//document.getElementById('exp3').scrollIntoView();
 					 	
-								$('html, body').animate({scrollTop: $('#exp3').offset().top -70 }, 'slow');
+								$('html, body').animate({scrollTop: $('#exp3').offset().top -75 }, 'slow');
 					}
 				} else {
 					var trying = document.getElementById("exp");
