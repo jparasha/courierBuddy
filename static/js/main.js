@@ -296,9 +296,9 @@ function getTracking(x) {
 							arr.push(trackingArray.checkpoints[i])
 						}
 						var updateTime = " Details updated at :  ";
-						var trackDetails = 'Your Consignment Number  : ';
+						var trackDetails = '<div>Your Consignment Number  : ';
 						var tracks = '<strong style="color:orange; text-align:right;">' + tData.track + '</strong>';
-						trackDetails = trackDetails + tracks;
+						trackDetails = trackDetails + tracks +'</div><div> Courier Name : <strong style="color:orange; text-align:right;">'+tData.slug+'</strong></div>';
 						var updateTimeArray = [];
 						var htm = '<hr style="margin-top: 1%; margin-bottom: 1%; border-top:1px solid #255277!important"><table class="table table-hover table-responsive table-bordered" style="padding:5%; border-color:#fff !important;"><thead><tr class="dataTable"><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
 						var outer = '';
@@ -358,7 +358,7 @@ function getTracking(x) {
 						doc3.innerHTML = trackDetails;
 						//document.getElementById('exp3').scrollIntoView();
 					 	
-								$('html, body').animate({scrollTop: $('#exp3').offset().top -100 }, 'slow');
+								$('html, body').animate({scrollTop: $('#exp3').offset().top -70 }, 'slow');
 					}
 				} else {
 					var trying = document.getElementById("exp");
