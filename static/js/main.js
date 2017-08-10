@@ -78,7 +78,7 @@ function createTracking() {
 				element4.classList.remove("bounce3");
 				var doc = document.getElementById("topMsg");
 				tracker.classList.remove('hidden');
-				doc.innerHTML = '<strong style="color:#5377d6;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
+				doc.innerHTML = '<strong style="color:orange;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
 				addCookies(data);
 			}).catch(function () {
 				var errorMsg = "Something Went Wrong in processing your request."
@@ -306,7 +306,7 @@ function getTracking(x) {
 						var len= data.data.trackings.length;
 						//console.log(len);
 						console.log(data.data.trackings[len-1].tag );
-						if (data.data.trackings[len-1].expected_delivery === null && data.data.trackings[len-1].tag === "Delivered") {
+						if (data.data.trackings[len-1].tag === "Delivered") {
 							exp = exp + '<strong style="color:green;">Package DELIVERED !</strong>';
 						}else if (data.data.trackings[len-1].tag === "InTransit") {
 							exp = exp + '<strong style="color:#9e9e9e;">Package is In-Transit !</strong>';
