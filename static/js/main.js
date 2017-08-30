@@ -260,7 +260,7 @@ function getTracking(x) {
 					if (nums < 5) {
 						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.message + '</strong>';
 						call();
-					} else if (nums >= 5 && nums <= 15) {
+					} else if (nums >= 5 && nums <= 10) {
 						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
 						call();
 					} else {
@@ -304,15 +304,19 @@ function getTracking(x) {
 						var outer = '';
 						var exp = '  Expected Date Of Delivery : ';
 						var len= data.data.trackings.length;
-						//console.log(len);
-						console.log(data.data.trackings[len-1].tag );
-						if (data.data.trackings[len-1].tag === "Delivered") {
+						/*for (var t=0; t< data.data.trackings.length; t++){
+							if(data.data.trackings[t].title.toUpperCase()===code.toUpperCase()){
+							   	console.log("tag is : "+data.data.trackings[t].tag);
+							   }
+						}*/
+						console.log(trackingArray);
+						if (trackingArray.tag === "Delivered") {
 							exp = exp + '<strong style="color:green;">Package DELIVERED !</strong>';
-						}else if (data.data.trackings[len-1].tag === "InTransit") {
+						}else if (trackingArray.tag === "InTransit") {
 							exp = exp + '<strong style="color:#9e9e9e;">Package is In-Transit !</strong>';
-						}else if (data.data.trackings[len-1].tag === "OutForDelivery") {
+						}else if (trackingArray.tag === "OutForDelivery") {
 							exp = exp + '<strong style="color:#8bc34a;">Package out for Delivery !</strong>';
-						} else if ((data.data.trackings[len-1].expected_delivery === null) && ((data.data.trackings[len-1].tag !== "Delivered") || (data.data.trackings[len-1].tag !== "InTransit") || (data.data.trackings[len-1].tag !== "OutForDelivery"))) {
+						} else if ((trackingArray.expected_delivery === null) && ((data.data.trackings[len-1].tag !== "Delivered") || (data.data.trackings[len-1].tag !== "InTransit") || (data.data.trackings[len-1].tag !== "OutForDelivery"))) {
 							exp = exp + '<strong style="color:orange;">CURRENTLY&nbsp;&nbsp;UNAVAILABLE!</strong>';
 						}  
 						else {
