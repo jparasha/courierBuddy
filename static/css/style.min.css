@@ -41,6 +41,9 @@
 	.navbar-brand {
 		padding-top: 2%!important
 	}
+	#cHeader{
+		font-size: 70% !important;
+	}
 }
 
 @media (min-width:610px) {
@@ -301,6 +304,7 @@ body {
 }
 
 .foot {
+	font-size: 150% !important;
 	padding-top: 5%;
 	padding-bottom: 5%
 }
@@ -311,6 +315,7 @@ body {
 }
 
 .footDown {
+	font-size: 150% !important;
 	padding-bottom: 1%;
 	padding-top: 1%;
 	background-color: #6e9fc7
