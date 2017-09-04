@@ -9,7 +9,8 @@
     <meta name="author" content="">
     <script type="text/javascript">
        var title =(window.location.href.toString().split(window.location.host)[1]);
-        document.title='CourierGuru | '+ title.replace(/\/|.html|Services/g, "");
+	   var title=title.replace(/\/|.html|Services/g, "");
+        document.title='CourierGuru | '+title ;		
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -54,12 +55,13 @@
 	<div class="container container-fluid">
         
          <div id="formDynamic"></div>
-		
+         <div id="specific"></div>
 
          <div class="footerDynamic" id="footerDynamic"></div>
 
     </div>
-    <script src="../static/js/footer.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="../static/js/footer.js"></script>    
     <script src="../static/js/support.min.js"></script>
 	<script src="../static/js/ga.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

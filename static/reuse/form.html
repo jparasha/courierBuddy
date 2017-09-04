@@ -1,28 +1,38 @@
  <div class="creator">
             <div class="addCourier" id="addCourier">
                 <div class="create" id="create">
+                  <h1 id="cHeader" style="margin-bottom: 8%">					
+				  </h1>
                    <span id="errors" style="text-align:center !important; margin-bottom: 2% !important; color:orange"></span>
                     <form class="form-horizontal form text-center" style="margin-bottom:2% !important;">
-					     <div class="form-group">
-                            <div class="col-sm-12">
-                            </div>
-                        </div>
-						<script type="text/javascript">
-						console.log(test);
+					  <script type="text/javascript">
+						    var inp = document.getElementById("cHeader");
+							var out=title.toUpperCase();
+							inp.innerHTML=out;
+							var code= document.getElementById("slug");
+							code.value=title.replace(/-tracking/g, "");
 						</script>
+                       
                         <div class="form-group">
                             <div class="col-sm-12 col-lg-12">
                                 <label for="code">Tracking Code</label>
                                 <input type="text" class="form-control input-lg" id="code" style="color:#255277 !important;" placeholder="Like : 'GGN50335013'" required>
-                                <input type="text" class="form-control input-lg" id="slug" style="color:#255277 !important;" value="test" hidden>
                             </div>
+                           <input type="text" id="slug" value="" hidden >
+
                         </div>
                         <div class="form-group btn-grp">
                             <div class="col-sm-12">
-                                <button type="button" onClick="trackDirect()" style="text-align:right;border-color:#fff; background-color:transparent;font-family: cuprum; color: orange; border-radius:0!important;" class="btn btn-lg btn-default"><strong>Create Tracking <span class="glyphicon glyphicon-menu-right"></span></strong></button>
+                                <button type="button" onClick="createTracking()" style="text-align:right;border-color:#fff; background-color:transparent;font-family: cuprum; color: orange; border-radius:0!important;" class="btn btn-lg btn-default"><strong>Create Tracking <span class="glyphicon glyphicon-menu-right"></span></strong></button>
                             </div>
                         </div>
                     </form>
+                    <div class="" id="spinner" style="margin-top:2%">
+                        <div class="" id="bounce1"></div>
+                        <div class="" id="bounce2"></div>
+                        <div class="" id="bounce3"></div>
+                    </div>
                 </div>
             </div>
         </div>
+        

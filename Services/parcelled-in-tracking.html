@@ -9,7 +9,8 @@
     <meta name="author" content="">
     <script type="text/javascript">
        var title =(window.location.href.toString().split(window.location.host)[1]);
-        document.title='CourierGuru | '+ title.replace(/\/|.html|Services/g, "");
+	   var title=title.replace(/\/|.html|Services/g, "");
+        document.title='CourierGuru | '+title ;		
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -18,7 +19,7 @@
             google_ad_client: "ca-pub-3344226246377810",
             enable_page_level_ads: true
         });
-    </script>	
+    </script>
     <link rel="shortcut icon" href="../static/images/favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/style.min.css">
@@ -54,12 +55,41 @@
 	<div class="container container-fluid">
         
          <div id="formDynamic"></div>
-		
+         <div id="specific"></div>
+         <div class="showAd" id="showAd"></div>       
+        
+        <div class="tracker hidden" id="tracker" style="border-bottom:none !important; border-top: 1px solid orange;">
+            <div class="msgs hidSegment">                
+                <div class="staticMsg text-left hidden" id="sMsg" style="color:#226194;margin-bottom:2%; font-size:140% !important;">Recently Created Trackings:</div>
+            	
+            </div>
+            <div class="storageTable">
+                <div id="trackTable"></div>
+                <div class="" id="_spinner" style="margin-top:2%">
+                    <div class="" id="_bounce1"></div>
+                    <div class="" id="_bounce2"></div>
+                    <div class="" id="_bounce3"></div>
+                </div>
+                <div class="QueryStatus" id="breathe"></div>
+            </div>
+			<div class="successMsg text-center" id="topMsg"></div>
+            <div class="displayTable" id="displayTable" style="text-align:left !important; ">              
+               <div class="col-lg-6 col-md-6 col-sm-12" >
+					<div class="trackDetails" id="exp3" style="color:#226194 !important;"></div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12" style="margin-bottom: 2%;">	
+					<div class="deliveryStatus" id="exp"></div>
+					<div class="updateTime" id="exp2"></div>
+				</div>                
+                <div class="data" id="data"></div>
+            </div>
+        </div>
 
          <div class="footerDynamic" id="footerDynamic"></div>
 
     </div>
-    <script src="../static/js/footer.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="../static/js/footer.js"></script>    
     <script src="../static/js/support.min.js"></script>
 	<script src="../static/js/ga.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
