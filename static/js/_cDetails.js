@@ -14,7 +14,7 @@ cDetails.Xpressbees={
 				"09:00 AM To 08:00 PM"+
 				"customercare[at]xpressbees.com"
 			  };
-console.log(cDetails.Xpressbees);
+//console.log(cDetails.Xpressbees);
 cDetails.dtdc={
 				"about": "dtdc is good compnay", 
 				"contact":98841
