@@ -40,6 +40,7 @@ function createTracking() {
 	document.getElementById("exp2").innerHTML = "";
 	document.getElementById("exp").innerHTML = "";
 	document.getElementById("exp3").innerHTML = "";
+	document.getElementById("slugErr").innerHTML = "";
 	var code = document.getElementById("code").value;
 	var slug = document.getElementById("slug").value;
 	if (code === "" || code === "null" || code.length < 8) {
@@ -219,6 +220,7 @@ function getTracking(x) {
 	var element5 = document.getElementById("topMsg");
 	document.getElementById("exp2").innerHTML = "";
 	document.getElementById("exp3").innerHTML = "";
+	document.getElementById("slugErr").innerHTML = "";
 	element5.innerHTML = "";
 	var tData = {
 		"slug": "",
@@ -282,6 +284,7 @@ function getTracking(x) {
 					}
 					if ( trackingArray===undefined || trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined ) {
 						var doc = document.getElementById("exp");
+						var slugErr = document.getElementById("slugErr");
 						var element1 = document.getElementById("_spinner");
 						var element2 = document.getElementById("_bounce1");
 						var element3 = document.getElementById("_bounce2");
@@ -290,7 +293,7 @@ function getTracking(x) {
 						element2.classList.remove("_bounce1");
 						element3.classList.remove("_bounce2");
 						element4.classList.remove("_bounce3");
-						doc.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error- tracking may have expired or not have been created yet! </strong>';
+						slugErr.innerHTML = '<strong style="color:red; margin-top:2%;" class="strng">Snapp.. That looks like an error- tracking may have expired or not have been created yet! Do verify your Courier Service </strong>';
 					} else {
 						for (var i = 0; i < trackingArray.checkpoints.length; i++) {
 							arr.push(trackingArray.checkpoints[i])
