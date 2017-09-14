@@ -3,7 +3,7 @@ var cDetails = [];
 cDetails.push(
     {
         "bluedart":{
-            "about":"Bludart says: We are South Asia's premier courier, and integrated express package Distribution Company. We have the most extensive domestic network covering over 35,000 locations, and service more than 220 countries and territories worldwide through our group company DHL, the premier global brand name in express distribution services.Our vision is to establish continuing excellence in delivery capabilities focused on the individual customer. In pursuit of sustainable leadership in quality services, we have evolved an infrastructure unique in the country today. Warehouses at 85 locations across the country as well as bonded warehouses at the 7 major metros of Ahmedabad, Bangalore, Chennai, Delhi, Mumbai, Kolkata and Hyderabad.",
+            "about":"Bluedart says: We are South Asia's premier courier, and integrated express package Distribution Company. We have the most extensive domestic network covering over 35,000 locations, and service more than 220 countries and territories worldwide through our group company DHL, the premier global brand name in express distribution services.Our vision is to establish continuing excellence in delivery capabilities focused on the individual customer. In pursuit of sustainable leadership in quality services, we have evolved an infrastructure unique in the country today. Warehouses at 85 locations across the country as well as bonded warehouses at the 7 major metros of Ahmedabad, Bangalore, Chennai, Delhi, Mumbai, Kolkata and Hyderabad.",
             "address":"https://www.bluedart.com/centralised.html",
             "contact":"1860 233 1234"
         }
