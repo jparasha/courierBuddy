@@ -72,7 +72,7 @@ function createTracking() {
 			}).then(function (response) {
 				return response.json();
 			}).then(function (data) {
-				var successMsg = "Great! We have created your " + data.slug + " tracking! "
+				var successMsg = "Great! We have created your " + data.slug + " tracking! You can Track in couple of minutes, Will then be availalbe forever unless you delete ;)"
 				element1.classList.remove("spinner");
 				element2.classList.remove("bounce1");
 				element3.classList.remove("bounce2");
@@ -256,13 +256,17 @@ function getTracking(x) {
 			}).then(function (data) {
 				mainData = data;
 				console.log(data);
+				var element1 = document.getElementById("_spinner");
+				var element2 = document.getElementById("_bounce1");
+				var element3 = document.getElementById("_bounce2");
+				var element4 = document.getElementById("_bounce3");
 				if (data.meta.code === 429) {
 					nums++;
 					var trying = document.getElementById("breathe");
 					if (nums < 5) {
 						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.message + '</strong>';
 						call();
-					} else if (nums >= 5 && nums <= 10) {
+					} else if (nums >= 5 && nums < 10) {
 						trying.innerHTML = '<strong style="color:#226194; margin-left:2%;">' + data.meta.failingMsg + '</strong>';
 						call();
 					} else {
