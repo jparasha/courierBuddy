@@ -7,5 +7,5 @@
 //var j= document.getElementById('formDynamic');
 
 	$('#formDynamic').load('/static/reuse/form.html');
-	$.getScript('/static/js/_cDetails.js');
+	//$.getScript('/static/js/_cDetails.js');
 	
