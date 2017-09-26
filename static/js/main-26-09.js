@@ -173,7 +173,7 @@ function deleteTracking(x) {
 	var td = tr.getElementsByTagName("td");
 	tData.slug = td[0].id;
 	tData.track = td[1].id;
-	console.log(tData);
+	//console.log(tData);
 	var index;
 	var isAvailable = false;
 	var deleteObj = localStorage.getItem('courierObj');
@@ -255,7 +255,7 @@ function getTracking(x) {
 				return response.json();
 			}).then(function (data) {
 				mainData = data;
-				console.log(data);
+				//console.log(data);
 				var element1 = document.getElementById("_spinner");
 				var element2 = document.getElementById("_bounce1");
 				var element3 = document.getElementById("_bounce2");
