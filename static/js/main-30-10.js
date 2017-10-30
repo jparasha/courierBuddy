@@ -4,11 +4,11 @@ xhr.send();
 var availableStorage = true;
 var init = '<table class= "table table-bordered table-hover table-responsive" ><thead><tr class="tablePadding"><td>Courier Name</td><td>Tracking code </td><td colspan="2">Action</td></tr><thead><tbody class="trackerTableBody">';
 var term = '</tbody></table>';
-var ul= "herokuapp";
+var ul = "herokuapp";
 if (typeof (Storage) !== "undefined") {
 	var retrievedObject = localStorage.getItem('courierObj');
 	var checkObj = JSON.parse(retrievedObject);
-	if (checkObj === null || checkObj.slug.length === 0) {} else {
+	if (checkObj === null || checkObj.slug.length === 0) { } else {
 		var tracker = document.getElementById('tracker');
 		var sMsg = document.getElementById('sMsg');
 		tracker.classList.remove('hidden');
@@ -20,14 +20,14 @@ if (typeof (Storage) !== "undefined") {
 	console.log("not available");
 }
 
-function knowMore(x){
-	if (x=== 'gotoDemo'){
+function knowMore(x) {
+	if (x === 'gotoDemo') {
 		var goto = document.getElementById('demo');
-		$('html, body').animate({scrollTop: $(goto).offset().top -50 }, 'slow');
+		$('html, body').animate({ scrollTop: $(goto).offset().top - 50 }, 'slow');
 	}
-	else if(x==='gotoCreate'){
+	else if (x === 'gotoCreate') {
 		var goto = document.getElementById('create');
-		$('html, body').animate({scrollTop: $(goto).offset().top -50 }, 'slow');
+		$('html, body').animate({ scrollTop: $(goto).offset().top - 50 }, 'slow');
 	}
 }
 function createTracking() {
@@ -54,14 +54,14 @@ function createTracking() {
 		element3.classList.add("bounce2");
 		element4.classList.add("bounce3");
 		errors.innerHTML = "";
-		var url = "https://couriermgmt."+ul+".com/createTracking";
+		var url = "https://couriermgmt." + ul + ".com/createTracking";
 		var bod = {
 			"slug": slug,
 			"tracking_number": code
 		};
-		
+
 		//try wether fetch is supported 
-		try{
+		try {
 			fetch(url, {
 				method: "post",
 				json: true,
@@ -72,13 +72,14 @@ function createTracking() {
 			}).then(function (response) {
 				return response.json();
 			}).then(function (data) {
-				var successMsg = "Great! We have created your " + data.slug + " tracking! You can Track in couple of minutes, Will then be availalbe forever unless you delete ;)"
+				var successMsg = "Great! We have created your " + data.slug + " tracking! You can Track from table above, in couple of minutes, Will then be available forever unless you delete :)"
 				element1.classList.remove("spinner");
 				element2.classList.remove("bounce1");
 				element3.classList.remove("bounce2");
 				element4.classList.remove("bounce3");
 				var doc = document.getElementById("topMsg");
 				tracker.classList.remove('hidden');
+				$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 100 }, 'slow');
 				doc.innerHTML = '<strong style="color:orange;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
 				addCookies(data);
 			}).catch(function () {
@@ -91,14 +92,14 @@ function createTracking() {
 				doc.innerHTML = '<strong style="color:red; margin-top:2%; margin-left:2%;">' + errorMsg + '</strong>';
 			});
 		}
-		catch(error){
+		catch (error) {
 			element1.classList.remove("spinner");
 			element2.classList.remove("bounce1");
 			element3.classList.remove("bounce2");
 			element4.classList.remove("bounce3");
-			console.log("SOME ERROR:"+error);
+			console.log("SOME ERROR:" + error);
 			var errorDoc = document.getElementById("errors");
-			var errormsg= "OUR BAD:( Your Browser's version is not currently supported! Please use Chrome for best results. Thanks :)";
+			var errormsg = "OUR BAD:( Your Browser's version is not currently supported! Please use Chrome for best results. Thanks :)";
 			errorDoc.innerHTML = '<strong style="color:orange; margin-top:2%; margin-left:2%;">' + errormsg + '</strong>';
 		}
 	}
@@ -116,7 +117,7 @@ function addCookies(data) {
 		if (retrievedObject === undefined || retrievedObject === null) {
 			var rowId = 0;
 			localStorage.setItem('courierObj', JSON.stringify(courierObj));
-			var mid = '<tr id="' + rowId + '"><td id="'+courierObj.slug+'">' + courierObj.slug + '</td><td id="' +courierObj.tracking +'">' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit; ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
+			var mid = '<tr id="' + rowId + '"><td id="' + courierObj.slug + '">' + courierObj.slug + '</td><td id="' + courierObj.tracking + '">' + courierObj.tracking + '</td><td id="getTracking" class="getTracking" onClick="getTracking(this.parentNode)"style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit; ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 			rowId++;
 			var table = init + mid + term;
 			createView(table);
@@ -127,14 +128,14 @@ function addCookies(data) {
 				if (retrievedObject.tracking[i] === data.tracking_code) {
 					console.log("already added!");
 					isAvailable = true;
-				} else {}
+				} else { }
 			}
 			if (isAvailable === false) {
 				retrievedObject.slug.push(data.slug);
 				retrievedObject.tracking.push(data.tracking_code);
 				localStorage.setItem('courierObj', JSON.stringify(retrievedObject));
 				///console.log(localStorage.courierObj);
-			} else {}
+			} else { }
 			getTable();
 		}
 	} else {
@@ -148,7 +149,7 @@ function getTable() {
 	var mid = '';
 	var rowId = 0;
 	for (var x = tableObj.tracking.length - 1; x >= 0; --x) {
-		addMid = '<tr id = "' + rowId + '"><td id="'+tableObj.slug[x]+'">' + tableObj.slug[x] + '</td><td id="'+ tableObj.tracking[x] +'">' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #inherit ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
+		addMid = '<tr id = "' + rowId + '"><td id="' + tableObj.slug[x] + '">' + tableObj.slug[x] + '</td><td id="' + tableObj.tracking[x] + '">' + tableObj.tracking[x] + '</td><td id="getTracking" onClick="getTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid #inherit ; "><strong>TRACK</strong></td><td class="delete" id="deleteTracking" onClick="deleteTracking(this.parentNode)" style="padding: 1% 4%; background-color:transparent; color:inherit; border : 1px solid inherit ; "><strong>Delete</strong></td></tr>';
 		mid = mid + addMid;
 		rowId++;
 	}
@@ -159,9 +160,9 @@ function getTable() {
 function createView(table) {
 	var jsView = document.getElementById('trackTable');
 	jsView.innerHTML = table;
-	var sc= document.getElementById('tracker');
+	var sc = document.getElementById('tracker');
 	//sc.scrollIntoView();
-	$('html, body').animate({scrollTop: $(sc).offset().top -50 }, 'slow');
+	$('html, body').animate({ scrollTop: $(sc).offset().top - 50 }, 'slow');
 }
 
 function deleteTracking(x) {
@@ -222,6 +223,7 @@ function getTracking(x) {
 	document.getElementById("exp3").innerHTML = "";
 	document.getElementById("slugErr").innerHTML = "";
 	element5.innerHTML = "";
+	$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 75 }, 'slow');
 	var tData = {
 		"slug": "",
 		"track": ""
@@ -230,7 +232,7 @@ function getTracking(x) {
 	var td = tr.getElementsByTagName("td");
 	tData.slug = td[0].id;
 	tData.track = td[1].id;
-	console.log(tData.slug +'::'+ tData.track);
+	console.log(tData.slug + '::' + tData.track);
 	var code = tData.track;
 	var slug = tData.slug;
 	if (code === "" || code === "null") {
@@ -243,12 +245,13 @@ function getTracking(x) {
 		element2.classList.add("_bounce1");
 		element3.classList.add("_bounce2");
 		element4.classList.add("_bounce3");
+		$('html, body').animate({ scrollTop: $('#exp3').offset().top - 75 }, 'slow');
 		call();
 
 		function call() {
 			var mainData;
 			var arr = [];
-			var url = "https://couriermgmt."+ul+".com/tracking/" + slug + "/" + code;
+			var url = "https://couriermgmt." + ul + ".com/tracking/" + slug + "/" + code;
 			fetch(url, {
 				method: "get"
 			}).then(function (response) {
@@ -283,10 +286,10 @@ function getTracking(x) {
 						if (title.toUpperCase() === code.toUpperCase()) {
 							if (data.data.trackings[i].checkpoints.length != 0) {
 								trackingArray = data.data.trackings[i];
-							} else {}
-						} else {}
+							} else { }
+						} else { }
 					}
-					if ( trackingArray===undefined || trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined ) {
+					if (trackingArray === undefined || trackingArray.checkpoints.length === 0 || trackingArray.checkpoints.length === undefined) {
 						var doc = document.getElementById("exp");
 						var slugErr = document.getElementById("slugErr");
 						var element1 = document.getElementById("_spinner");
@@ -305,12 +308,12 @@ function getTracking(x) {
 						var updateTime = " Details updated at :  ";
 						var trackDetails = '<div>Your Consignment Number  : ';
 						var tracks = '<strong style="color:orange; text-align:right;">' + tData.track + '</strong>';
-						trackDetails = trackDetails + tracks +'</div><div> Courier Name : <strong style="color:orange; text-align:right;">'+tData.slug+'</strong></div>';
+						trackDetails = trackDetails + tracks + '</div><div> Courier Name : <strong style="color:orange; text-align:right;">' + tData.slug + '</strong></div>';
 						var updateTimeArray = [];
 						var htm = '<hr style="margin-top: 1%; margin-bottom: 1%; border-top:1px solid #255277!important"><table class="table table-hover table-responsive table-bordered" style="padding:5%; border-color:#fff !important;"><thead><tr class="dataTable"><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
 						var outer = '';
 						var exp = '  Expected Date Of Delivery : ';
-						var len= data.data.trackings.length;
+						var len = data.data.trackings.length;
 						/*for (var t=0; t< data.data.trackings.length; t++){
 							if(data.data.trackings[t].title.toUpperCase()===code.toUpperCase()){
 							   	console.log("tag is : "+data.data.trackings[t].tag);
@@ -319,15 +322,15 @@ function getTracking(x) {
 						console.log(trackingArray);
 						if (trackingArray.tag === "Delivered") {
 							exp = exp + '<strong style="color:green;">Package DELIVERED !</strong>';
-						}else if (trackingArray.tag === "InTransit") {
+						} else if (trackingArray.tag === "InTransit") {
 							exp = exp + '<strong style="color:#9e9e9e;">Package is In-Transit !</strong>';
-						}else if (trackingArray.tag === "OutForDelivery") {
+						} else if (trackingArray.tag === "OutForDelivery") {
 							exp = exp + '<strong style="color:#8bc34a;">Package out for Delivery !</strong>';
-						} else if ((trackingArray.expected_delivery === null) && ((data.data.trackings[len-1].tag !== "Delivered") || (data.data.trackings[len-1].tag !== "InTransit") || (data.data.trackings[len-1].tag !== "OutForDelivery"))) {
+						} else if ((trackingArray.expected_delivery === null) && ((data.data.trackings[len - 1].tag !== "Delivered") || (data.data.trackings[len - 1].tag !== "InTransit") || (data.data.trackings[len - 1].tag !== "OutForDelivery"))) {
 							exp = exp + '<strong style="color:orange;">CURRENTLY&nbsp;&nbsp;UNAVAILABLE!</strong>';
-						}  
+						}
 						else {
-							var expD= new Date(data.data.trackings[len-1].expected_delivery);
+							var expD = new Date(data.data.trackings[len - 1].expected_delivery);
 							expD.toLocaleDateString().replace(/\//g, '-');
 							exp = exp + '<strong style="color:orange;">' + expD + '</strong>';
 						}
@@ -343,7 +346,7 @@ function getTracking(x) {
 							var inner = '<tr><td>' + istDate + '</td><td>' + city + '</td><td>' + arr[j].message + '</td></tr>';
 							outer = outer + inner;
 							updateTimeArray.push(arr[j].created_at);
-							
+
 						}
 						var d = new Date(updateTimeArray[0]);
 						d.toLocaleDateString().replace(/\//g, '-');
@@ -353,7 +356,7 @@ function getTracking(x) {
 						var element2 = document.getElementById("_bounce1");
 						var element3 = document.getElementById("_bounce2");
 						var element4 = document.getElementById("_bounce3");
-                        element1.classList.remove("_spinner");
+						element1.classList.remove("_spinner");
 						element2.classList.remove("_bounce1");
 						element3.classList.remove("_bounce2");
 						element4.classList.remove("_bounce3");
@@ -368,8 +371,8 @@ function getTracking(x) {
 						doc.innerHTML = htm;
 						doc3.innerHTML = trackDetails;
 						//document.getElementById('exp3').scrollIntoView();
-					 	
-								$('html, body').animate({scrollTop: $('#exp3').offset().top -75 }, 'slow');
+
+						$('html, body').animate({ scrollTop: $('#exp3').offset().top - 75 }, 'slow');
 					}
 				} else {
 					var trying = document.getElementById("exp");
