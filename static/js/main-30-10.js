@@ -79,9 +79,9 @@ function createTracking() {
 				element4.classList.remove("bounce3");
 				var doc = document.getElementById("topMsg");
 				tracker.classList.remove('hidden');
-				$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 100 }, 'slow');
 				doc.innerHTML = '<strong style="color:orange;margin-bottom:2%;font-size:140% !important;">' + successMsg + '</strong>';
 				addCookies(data);
+				$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 100 }, 'slow');
 			}).catch(function () {
 				var errorMsg = "Something Went Wrong in processing your request."
 				element1.classList.remove("spinner");
@@ -223,7 +223,7 @@ function getTracking(x) {
 	document.getElementById("exp3").innerHTML = "";
 	document.getElementById("slugErr").innerHTML = "";
 	element5.innerHTML = "";
-	$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 75 }, 'slow');
+	$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 150 }, 'slow');
 	var tData = {
 		"slug": "",
 		"track": ""
