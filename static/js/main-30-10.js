@@ -223,7 +223,7 @@ function getTracking(x) {
 	document.getElementById("exp3").innerHTML = "";
 	document.getElementById("slugErr").innerHTML = "";
 	element5.innerHTML = "";
-	$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 150 }, 'slow');
+	$('html, body').animate({ scrollTop: $('#topMsg').offset().top - 200 }, 'slow');
 	var tData = {
 		"slug": "",
 		"track": ""
@@ -307,10 +307,12 @@ function getTracking(x) {
 						}
 						var updateTime = " Details updated at :  ";
 						var trackDetails = '<div>Consignment Details  : ';//
-						var tracks = '<strong style="color:orange; text-align:right;">' +tData.track+','+ tData.slug+' </strong>';
+						var tracks = '<strong style="color:orange; text-align:right;">' +tData.track+',  '+ tData.slug.toUpperCase()+' </strong>';
 						var exp_del;
-						if (trackingArray.expected_delivery != undefined) {
-							exp_del = trackingArray.expected_delivery;
+						if (trackingArray.expected_delivery != undefined || trackingArray.expected_delivery != null) {
+							var expD = new Date(trackingArray.expected_delivery);
+							expD.toLocaleDateString().replace(/\//g, '-');
+							exp_del = expD;
 						}
 						else {
 							exp_del = 'Appears unavailable at this moment!';
