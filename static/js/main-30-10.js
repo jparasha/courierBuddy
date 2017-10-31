@@ -306,13 +306,21 @@ function getTracking(x) {
 							arr.push(trackingArray.checkpoints[i])
 						}
 						var updateTime = " Details updated at :  ";
-						var trackDetails = '<div>Your Consignment Number  : ';
-						var tracks = '<strong style="color:orange; text-align:right;">' + tData.track + '</strong>';
-						trackDetails = trackDetails + tracks + '</div><div> Courier Name : <strong style="color:orange; text-align:right;">' + tData.slug + '</strong></div>';
+						var trackDetails = '<div>Consignment Details  : ';//
+						var tracks = '<strong style="color:orange; text-align:right;">' +tData.track+','+ tData.slug+' </strong>';
+						var exp_del;
+						if (trackingArray.expected_delivery != undefined) {
+							exp_del = trackingArray.expected_delivery;
+						}
+						else {
+							exp_del = 'Appears unavailable at this moment!';
+						}
+						trackDetails = trackDetails + tracks + '</div><div> Expect delivery on : <strong style="color:orange; text-align:right;">' + exp_del + '</strong></div>';
 						var updateTimeArray = [];
 						var htm = '<hr style="margin-top: 1%; margin-bottom: 1%; border-top:1px solid #255277!important"><table class="table table-hover table-responsive table-bordered" style="padding:5%; border-color:#fff !important;"><thead><tr class="dataTable"><td>Time</td><td>City/Location</td><td>Status</td></tr></thead><tbody>';
 						var outer = '';
-						var exp = '  Expected Date Of Delivery : ';
+						var exp = '  Consignment Status : ';
+						//var exp = '  Expected Date Of Delivery : ';
 						var len = data.data.trackings.length;
 						/*for (var t=0; t< data.data.trackings.length; t++){
 							if(data.data.trackings[t].title.toUpperCase()===code.toUpperCase()){
